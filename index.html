@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сайт Савиловой Карины на Яндекс.Практикуме">
+  <meta name="keywords" content="html, css, javascript">
+  <meta name="author"  content="Савилова Карина">
+  <link rel="stylesheet" href="./style.css">
+  <title>Социальная сеть mesto</title> <!-- Слышала в подкасте, что это соц. сеть -->
+</head>
+
+<body class="page">
+
+    <header class="header page__header">
+        <img src="./images/Vector-logo.svg" alt="логотип социальной сети" class="header__logo"><!-- SVG должно быть -->
+        <div class="header__Line"></div> <!-- Возможно реализовывать фоном и делать узкой -->
+    </header>
+
+    <main class="content page__content">
+
+        <section class="content__profile profile">
+            <div class="profile__avatar"></div> <!-- div сделать круглам и на фон уже картинку -->
+            <div class="profile__Info">
+                <div class="profile__user">
+                    <p class="profile__user-name">Жак-Ив Кусто</p>
+                    <button class="profile__edit-button">
+                        <img src="./images/Edit Button.png" art="Кнопка для изменения имени" class="profile__button-image">
+                    </button>  
+                </div>
+                <p class="profile__user-status">Исследователь океана</p>
+                
+            </div>
+           <button class="profile__add-button">
+                <img src="./images/Vector-plus.svg" art="Кнопка для добавления изображений" class="profile__button-card"> 
+           </button>
+        </section>
+
+        <section class="elements content__elements">
+
+            <ul class="elements__items">
+                <li class="elements__element">
+                    <img src="./images/kaliningrad_fish.jpg" class="elements__mask-group" alt="фотография с изображением Рыбной деревни в Калининграде">
+                    <div class="elements__reaction"> 
+                        <p class="elements__mesto-name">Рыбная деревня</p>
+                        <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                    </div>
+                </li>
+
+                <li class="elements__element">
+                    <img src="./images/korolevskie-vorota.jpg" class="elements__mask-group" alt="фотография с изображением Королевских ворот в Калининграде">
+                    <div class="elements__reaction"> 
+                        <p class="elements__mesto-name">Королевские ворота</p>
+                        <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                    </div>
+                </li>
+
+                <li class="elements__element">
+                    <img src="./images/kurskaj-kosa.jpg" class="elements__mask-group" alt="фотография с изображением Куршской косы">
+                    <div class="elements__reaction"> 
+                        <p class="elements__mesto-name">Куршская коса</p>
+                        <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                    </div>
+                </li>
+
+
+                <li class="elements__element">
+                    <img src="./images/zelenogradsk.jpg" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
+                    <div class="elements__reaction"> 
+                        <p class="elements__mesto-name">Зеленоградск</p>
+                        <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                    </div>
+                </li>
+
+                <li class="elements__element">
+                    <img src="./images/zelenogradsk-cat.jpg" class="elements__mask-group" alt="фотография с изображением стрит-арта в городе Зеленоградске (города кото)">
+                    <div class="elements__reaction"> 
+                        <p class="elements__mesto-name">Зеленоградск</p>
+                        <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                    </div>
+                </li>
+
+                <li class="elements__element">
+                    <img src="./images/Svetlogorsk.jpg" class="elements__mask-group" alt="фотография с изображением города Светлогорск">
+                    <div class="elements__reaction"> 
+                        <p class="elements__mesto-name">Светлогорск</p>
+                        <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                    </div>
+                </li>
+            </ul>
+
+        </section>
+
+    </main>
+
+    <footer class="footer content__footer">
+        <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+    </footer>
+
+
+</body>
+
+</html>
