@@ -7,6 +7,7 @@
   <meta name="keywords" content="html, css, javascript">
   <meta name="author"  content="Савилова Карина">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./fonts/fonts.css">
   <title>Социальная сеть mesto</title> <!-- Слышала в подкасте, что это соц. сеть -->
 </head>
 
@@ -96,15 +97,17 @@
     <footer class="footer content__footer">
         <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
-    
+   
     <div class="popup">
         <div class="popup__container">
            <form class="popup__form">
             <button class="popup__button-close"></button>
             <p class="popup__text-description">Редактировать профиль</p>
             <fieldset class="popup__contact-info">
-                <input type="text" class="popup__item-name">
-                <input type="text" class="popup__item-about">
+            
+                <input type="text" id="item-name" name="item-name" class="popup__item-name" value="Жак-Ив Кусто">
+                
+                <input type="text" id="item-about" name="item-about" class="popup__item-about"  value="Исследователь океана">
                 <button type="submit" class="popup__button-retention">Сохранить</button>
             </fieldset>
            </form>

@@ -112,7 +112,7 @@
     }
     
     .profile__info {
-        margin-right: 244px;
+        padding-right: 263px;
         align-self: center;
         max-width: 336px;
         justify-content: space-between;
@@ -167,6 +167,12 @@
         padding: 0 0 0 18px;
     }
 
+    .profile__edit-button:hover {
+        opacity: 0.6;
+        cursor: url(../../../images/Pointer.png) 2 2, pointer;
+    }
+
+
     @media screen and (max-width: 767px) {
         .profile__edit-button {
             width: 18px;
@@ -200,6 +206,12 @@
         border-radius: 2px;
         align-self: center;
         border: 2px solid #FFFFFF;
+        padding: 0;
+    }
+
+    .profile__add-button:hover {
+        opacity: 0.6;
+        cursor: url(../../../images/Pointer.png) 2 2, pointer;
     }
 
     @media screen and (max-width: 767px) {
@@ -355,6 +367,13 @@
         align-self: center;
     }   
 
+    @media screen and (max-width: 767px) {
+        .popup__container {
+            width: 282px;
+            height: 322px;
+    }
+    }
+
     .popup__button-close {
         align-self: flex-end;
         margin-top: -32px;
@@ -366,6 +385,12 @@
         background-color: rgba(0, 0, 0, 0);
         border: none;
     }
+
+    .popup__button-close:hover {
+        opacity: 0.6;
+        cursor: url(../../../images/Pointer.png) 2 2, pointer;
+    }
+
 
     .popup__form {
         display: flex;
@@ -382,6 +407,16 @@
         margin: 0;
     }
 
+    @media screen and (max-width: 767px) {
+        .popup__text-description{
+            font-size: 18px;
+            line-height: 22px;
+            max-width: 240px;
+            padding: 25px 22px 75px 22px;
+    }
+    }
+   
+
     .popup__contact-info {
         display: flex;
         flex-direction: column;
@@ -390,6 +425,13 @@
         padding-left: 36px;
         margin: 0;
     }
+
+    @media screen and (max-width: 767px) {
+        .popup__contact-info {
+            padding-left: 22px;
+    }
+    }
+
 
     .popup__item-name {
         max-width: 358px;
@@ -401,8 +443,14 @@
         padding: 0;
         margin-bottom: 30px;
         border: none;
-        opacity: 0.2;
-        border-bottom: 1px solid #000000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    @media screen and (max-width: 767px) {
+        .popup__item-name {
+            width: 238px;
+            margin-bottom: 22px;
+    }
     }
 
     .popup__item-about {
@@ -415,8 +463,13 @@
         margin: 0;
         padding: 0;
         border: none;
-        opacity: 0.2;
-        border-bottom: 1px solid #000000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    @media screen and (max-width: 767px) {
+        .popup__item-about  {
+            width: 238px;
+    }
     }
 
     .popup__button-retention {
@@ -432,4 +485,18 @@
         padding: 0;
     }
 
+    .popup__button-retention:hover {
+        opacity: 0.8;
+        cursor: url(../../../images/Pointer.png) 2 2, pointer;
+    }
+
+    @media screen and (max-width: 767px) {
+        .popup__button-retention{
+            width: 238px;
+            height: 46px;
+            margin: 45px 0 25px 0;
+    }
+    }
+
+    
     
