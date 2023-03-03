@@ -53,7 +53,7 @@
 
     @media screen and (max-width: 767px) {
         .header__Line  {
-            width: 320px;
+        max-width: 320px;
         }
     }
     
@@ -175,7 +175,7 @@
     }
     }
     
-    .profile__user-status {
+    .profile__user-info {
         margin: 0;
         padding-top: 16px;
         max-width: 336px;
@@ -329,3 +329,107 @@
     }
     }
   
+    /*popup */
+
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .popup_is-open {
+        display: flex;
+    }
+
+    .popup__container {
+        width: 430px;
+        height: 330px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        align-self: center;
+    }   
+
+    .popup__button-close {
+        align-self: flex-end;
+        margin-top: -32px;
+        margin-right: -32px;
+        width: 32px;
+        height: 32px;
+        background-image: url(./images/Close-Icon.svg);
+        background-position: center;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+    }
+
+    .popup__form {
+        display: flex;
+        flex-direction: column;
+
+    } 
+
+    .popup__text-description {
+        font-size: 24px;
+        line-height: 29px;
+        max-width: 330px;
+        color: #000000;
+        padding: 34px 0 54px 36px;
+        margin: 0;
+    }
+
+    .popup__contact-info {
+        display: flex;
+        flex-direction: column;
+        border: none;
+        padding: 0;
+        padding-left: 36px;
+        margin: 0;
+    }
+
+    .popup__item-name {
+        max-width: 358px;
+        height: 27px;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 30px;
+        border: none;
+        opacity: 0.2;
+        border-bottom: 1px solid #000000;
+    }
+
+    .popup__item-about {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        max-width: 358px;
+        height: 27px;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+        border: none;
+        opacity: 0.2;
+        border-bottom: 1px solid #000000;
+    }
+
+    .popup__button-retention {
+        background-color: #000000;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 358px;
+        height: 50px;
+        text-align: center;
+        color: #FFFFFF;
+        margin: 48px 0 37px 0;
+        padding: 0;
+    }
+
+    
