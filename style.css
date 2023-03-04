@@ -74,6 +74,7 @@
     .profile {
         display: flex;
         max-width: 880px;
+        justify-content: space-between;
     }
 
     @media screen and (max-width: 767px) {
@@ -94,6 +95,16 @@
         }
     }
     
+    .profile__person {
+        display: flex;
+    }
+
+    @media screen and (max-width: 767px) {
+        .profile__person {
+            display: block;
+        }
+    }
+
     .profile__avatar {
         width: 120px;
         height: 120px;
@@ -112,25 +123,25 @@
     }
     
     .profile__info {
-        padding-right: 263px;
+        padding-right: 244px;
         align-self: center;
         max-width: 336px;
         justify-content: space-between;
-    }
+    } 
 
     @media screen and (max-width: 900px) {
         .profile__info {
-        margin-right: 150px;
+        padding-right: 150px;
     }
     }
 
     @media screen and (max-width: 767px) {
         .profile__info {
-            margin-right: 0px;
+        padding-right: 0px;
     }
-    }
+    } 
 
-    .profile__user{
+  .profile__user{
         display: flex;
         align-items: baseline;
     }
@@ -139,7 +150,7 @@
         .profile__user {
             justify-content: center;
     }
-    }
+    } 
        
     .profile__user-name {
         margin: 0;
@@ -182,8 +193,8 @@
     }
     
     .profile__user-info {
-        margin: 0;
-        padding-top: 16px;
+        margin: 16px 0 0 0;
+        padding-top: 0;
         max-width: 336px;
         font-weight: 400;
         font-size: 18px;
@@ -191,11 +202,12 @@
     }
 
     @media screen and (max-width: 767px) {
-        .profile__user-status {
+        .profile__user-info {
             font-size: 14px;
             line-height: 17px;
             text-align: center;
-            margin-bottom: 33px;
+            margin: 7px 0 33px 0;
+
     }
     }
     
@@ -205,8 +217,11 @@
         height: 50px;
         border-radius: 2px;
         align-self: center;
-        border: 2px solid #FFFFFF;
         padding: 0;
+        border: 2px solid #FFFFFF;
+        background-repeat: no-repeat;
+        background-image: url(./images/Vector-+.svg);
+        background-position: center;
     }
 
     .profile__add-button:hover {
