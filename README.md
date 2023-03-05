@@ -27,6 +27,4 @@
 
 https://karina-s-777.github.io/mesto/
 
-**Картинка для поднятия настроения**
-
-![Кот программист](https://github.com/mesto/blob/main/1668774241_damion-club-p-kotik-programmist-instagram-2.jpg)
+Приятного просмотра!
