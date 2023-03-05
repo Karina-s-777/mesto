@@ -1,0 +1,7 @@
+
+.elements__reaction {
+    display: flex;
+    justify-content: space-between;
+    max-width: 246px;
+    padding: 25px 20px 31px 21px;
+}

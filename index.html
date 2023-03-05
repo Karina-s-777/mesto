@@ -6,7 +6,7 @@
   <meta name="description" content="Сайт Савиловой Карины на Яндекс.Практикуме">
   <meta name="keywords" content="html, css, javascript">
   <meta name="author"  content="Савилова Карина">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Социальная сеть mesto</title> <!-- Слышала в подкасте, что это соц. сеть -->
 </head>
 
@@ -14,27 +14,26 @@
 
     <header class="header page__header">
         <img src="./images/Vector-logo.svg" alt="логотип социальной сети" class="header__logo">
-        <div class="header__Line"></div> 
+        <div class="header__line"></div>
     </header>
 
     <main class="content page__content">
 
         <section class="content__profile profile">
-            <img src="./images/image-avatar.jpg" class="profile__avatar"></div> 
+            <div class="profile__person">
+            <img src="./images/image-avatar.jpg" class="profile__avatar">
             <div class="profile__info">
                 <div class="profile__user">
                     <p class="profile__user-name">Жак-Ив Кусто</p>
                     <button class="profile__edit-button">
-                         <img src="./images/Edit Button.png" art="Кнопка для изменения имени" class="profile__button-image">
+                        <img src="./images/Edit Button.png" art="Кнопка для изменения имени" class="profile__button-image">
                     </button>  
                 </div>
-                <p class="profile__user-status">Исследователь океана</p>
-                
+                <p class="profile__user-info">Исследователь океана</p> 
             </div>
-           <button class="profile__add-button">
-               <img src="./images/Vector-plus.svg" art="Кнопка для добавления изображений" class="profile__button-card">
-           </button>
-        </section>
+            </div>
+           <button class="profile__add-button"></button>
+        </section> 
 
         <section class="elements content__elements">
 
@@ -93,11 +92,26 @@
 
     </main>
 
-    <footer class="footer content__footer">
+    <footer class="footer page__footer">
         <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
+   
+    <div class="popup">
+        <div class="popup__container">
+           <form class="popup__form">
+            <button class="popup__button-close"></button>
+            <p class="popup__text-description">Редактировать профиль</p>
+            <fieldset class="popup__contact-info">
+                <input type="text" id="item-name" name="item-name" class="popup__item-name" value="Жак-Ив Кусто">
+                <input type="text" id="item-about" name="item-about" class="popup__item-about"  value="Исследователь океана">
+                <button type="submit" class="popup__button-retention">Сохранить</button>
+            </fieldset>
+           </form>
+          
+        </div>
+    </div>
 
-
+<script src="./index.js"></script>
 </body>
 
 </html>

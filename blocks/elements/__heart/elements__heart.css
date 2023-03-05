@@ -1,0 +1,15 @@
+.elements__heart {
+    width: 22px;
+    height: 19px;
+    align-self: center;
+}
+
+.elements__heart:hover {
+    opacity: 0.5;
+    cursor: url(../../../images/Pointer.png) 2 2, pointer;
+}
+
+.elements__heart:active {
+    background-image: url(../../../images/heart-activ.svg);
+    opacity: 1;
+}
