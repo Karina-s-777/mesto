@@ -1,0 +1,16 @@
+.popup__button-close {
+    align-self: flex-end;
+    margin-top: -32px;
+    margin-right: -32px;
+    width: 32px;
+    height: 32px;
+    background-image: url(./images/Close-Icon.svg);
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.popup__button-close:hover {
+    opacity: 0.6;
+    cursor: url(../../../images/Pointer.png) 2 2, pointer;
+}

@@ -1,0 +1,10 @@
+.profile__user{
+    display: flex;
+    align-items: baseline;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__user {
+        justify-content: center;
+}
+} 
