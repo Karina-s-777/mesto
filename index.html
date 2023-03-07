@@ -13,22 +13,21 @@
 <body class="page">
   <header class="header page__header">
     <img src="./images/Vector-logo.svg" alt="логотип социальной сети" class="header__logo">
-    <div class="header__line"></div>
   </header>
 
     <main class="content page__content">
       <section class="content__profile profile">
         <div class="profile__person">
-          <img src="./images/image-avatar.jpg" class="profile__avatar">
+          <img src="./images/image-avatar.jpg" class="profile__avatar" alt="Фотография пользователя">
           <div class="profile__info">
             <div class="profile__user">
-              <p class="profile__user-name">Жак-Ив Кусто</p>
-              <button class="profile__edit-button"></button>
+              <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button"></button>
             </div>
             <p class="profile__user-info">Исследователь океана</p>
             </div>
         </div>
-           <button class="profile__add-button"></button>
+           <button class="profile__add-button" type="button"></button>
         </section>
 
         <section class="elements content__elements">
@@ -36,24 +35,25 @@
             <li class="elements__element">
               <img src="./images/kaliningrad_fish.jpg" class="elements__mask-group" alt="фотография с изображением Рыбной деревни в Калининграде">
               <div class="elements__reaction">
-                <p class="elements__mesto-name">Рыбная деревня</p>
-                <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                <h2 class="elements__mesto-name">Рыбная деревня</h2>
+                <!-- Здесь и далее в классах сердечек появится ещё один класс elements__heart_active  -->
+                <button class="elements__heart" type="button"></button>
               </div>
             </li>
 
             <li class="elements__element">
                <img src="./images/korolevskie-vorota.jpg" class="elements__mask-group" alt="фотография с изображением Королевских ворот в Калининграде">
                <div class="elements__reaction">
-                  <p class="elements__mesto-name">Королевские ворота</p>
-                  <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                  <h2  class="elements__mesto-name">Королевские ворота</h2>
+                  <button class="elements__heart" type="button"></button>
                 </div>
             </li>
 
             <li class="elements__element">
               <img src="./images/kurskaj-kosa.jpg" class="elements__mask-group" alt="фотография с изображением Куршской косы">
               <div class="elements__reaction">
-                <p class="elements__mesto-name">Куршская коса</p>
-                <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                <h2  class="elements__mesto-name">Куршская коса</h2>
+                <button class="elements__heart" type="button"></button>
               </div>
             </li>
 
@@ -61,24 +61,24 @@
             <li class="elements__element">
               <img src="./images/zelenogradsk.jpg" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
               <div class="elements__reaction">
-                <p class="elements__mesto-name">Зеленоградск</p>
-                <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                <h2 class="elements__mesto-name">Зеленоградск</h2>
+                <button class="elements__heart" type="button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="./images/zelenogradsk-cat.jpg" class="elements__mask-group" alt="фотография с изображением стрит-арта в городе Зеленоградске (города кото)">
               <div class="elements__reaction">
-                <p class="elements__mesto-name">Зеленоградск</p>
-                <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                <h2 class="elements__mesto-name">Зеленоградск</h2>
+                <button class="elements__heart" type="button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="./images/Svetlogorsk.jpg" class="elements__mask-group" alt="фотография с изображением города Светлогорск">
               <div class="elements__reaction">
-                <p class="elements__mesto-name">Светлогорск</p>
-                <img src="./images/heart.svg" class="elements__heart" alt="картинка с изображением сердца, которая используется в качестве лайка">
+                <h2 class="elements__mesto-name">Светлогорск</h2>
+                <button class="elements__heart" type="button"></button>
               </div>
             </li>
           </ul>
@@ -92,12 +92,12 @@
 
     <div class="popup">
       <div class="popup__container">
-        <form class="popup__form">
-          <button class="popup__button-close"></button>
-          <p class="popup__text-description">Редактировать профиль</p>
+        <button class="popup__button-close" type="button"></button>
+        <h2 class="popup__text-description">Редактировать профиль</h2>
+        <form class="popup__form" name="popup">
           <fieldset class="popup__contact-info">
-            <input type="text" id="item-name" name="item-name" class="popup__item-name" value="Жак-Ив Кусто">
-            <input type="text" id="item-about" name="item-about" class="popup__item-about"  value="Исследователь океана">
+            <input type="text" id="item-name" name="item-name" class="popup__item popup__item_name" value="">
+            <input type="text" id="item-about" name="item-about" class="popup__item popup__item_about"  value="">
             <button type="submit" class="popup__button-retention">Сохранить</button>
           </fieldset>
         </form>
@@ -105,7 +105,7 @@
       </div>
     </div>
 
-<script src="./index.js"></script>
+<script src="./scripts/index.js"></script>
 </body>
 
 </html>

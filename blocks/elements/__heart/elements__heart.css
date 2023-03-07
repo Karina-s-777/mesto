@@ -1,7 +1,11 @@
 .elements__heart {
+    background: transparent;
     width: 22px;
     height: 19px;
     align-self: center;
+    background-image: url(../../../images/heart.svg);
+    border: none;
+
 }
 
 .elements__heart:hover {
@@ -9,7 +13,3 @@
     cursor: url(../../../images/Pointer.png) 2 2, pointer;
 }
 
-.elements__heart:active {
-    background-image: url(../../../images/heart-activ.svg);
-    opacity: 1;
-}
