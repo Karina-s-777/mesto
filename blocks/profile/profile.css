@@ -4,7 +4,7 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
     .profile  {
         display: block;
         max-width: 282px;

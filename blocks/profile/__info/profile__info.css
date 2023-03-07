@@ -11,7 +11,7 @@
 }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
     .profile__info {
     padding-right: 0;
 }

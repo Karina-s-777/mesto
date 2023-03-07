@@ -3,7 +3,7 @@
     align-items: baseline;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
     .profile__user {
       padding-left: 47px;
 }
