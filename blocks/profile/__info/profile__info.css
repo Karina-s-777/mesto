@@ -3,7 +3,7 @@
     align-self: center;
     max-width: 336px;
     justify-content: space-between;
-} 
+}
 
 @media screen and (max-width: 980px) {
     .profile__info {
@@ -13,6 +13,6 @@
 
 @media screen and (max-width: 767px) {
     .profile__info {
-    padding-right: 0px;
+    padding-right: 0;
 }
-} 
+}
