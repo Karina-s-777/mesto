@@ -7,13 +7,14 @@
     list-style: none;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1092px) {
     .elements__items {
       grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
 }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 960px) {
     .elements__items {
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
