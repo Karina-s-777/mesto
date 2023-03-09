@@ -30,5 +30,3 @@ const handleFormSubmit = function (evt) {
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
-
-
