@@ -5,9 +5,3 @@
     max-width: 246px;
     padding: 25px 20px 25px 21px;
 }
-
-@media screen and (max-width: 767px) {
-  .elements__reaction {
-  padding-bottom: 31px;
-}
-}
