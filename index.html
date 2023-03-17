@@ -31,57 +31,7 @@
         </section>
 
         <section class="elements content__elements">
-          <ul class="elements__items">
-            <li class="elements__element">
-              <img src="./images/kaliningrad_fish.jpg" class="elements__mask-group" alt="фотография с изображением Рыбной деревни в Калининграде">
-              <div class="elements__reaction">
-                <h2 class="elements__mesto-name">Рыбная деревня</h2>
-                <!-- Здесь и далее в классах сердечек появится ещё один класс elements__heart_active  -->
-                <button class="elements__heart" type="button"></button>
-              </div>
-            </li>
-
-            <li class="elements__element">
-               <img src="./images/korolevskie-vorota.jpg" class="elements__mask-group" alt="фотография с изображением Королевских ворот в Калининграде">
-               <div class="elements__reaction">
-                  <h2  class="elements__mesto-name">Королевские ворота</h2>
-                  <button class="elements__heart" type="button"></button>
-                </div>
-            </li>
-
-            <li class="elements__element">
-              <img src="./images/kurskaj-kosa.jpg" class="elements__mask-group" alt="фотография с изображением Куршской косы">
-              <div class="elements__reaction">
-                <h2  class="elements__mesto-name">Куршская коса</h2>
-                <button class="elements__heart" type="button"></button>
-              </div>
-            </li>
-
-
-            <li class="elements__element">
-              <img src="./images/zelenogradsk.jpg" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
-              <div class="elements__reaction">
-                <h2 class="elements__mesto-name">Зеленоградск</h2>
-                <button class="elements__heart" type="button"></button>
-              </div>
-            </li>
-
-            <li class="elements__element">
-              <img src="./images/zelenogradsk-cat.jpg" class="elements__mask-group" alt="фотография с изображением стрит-арта в городе Зеленоградске (города кото)">
-              <div class="elements__reaction">
-                <h2 class="elements__mesto-name">Зеленоградск</h2>
-                <button class="elements__heart" type="button"></button>
-              </div>
-            </li>
-
-            <li class="elements__element">
-              <img src="./images/Svetlogorsk.jpg" class="elements__mask-group" alt="фотография с изображением города Светлогорск">
-              <div class="elements__reaction">
-                <h2 class="elements__mesto-name">Светлогорск</h2>
-                <button class="elements__heart" type="button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements__items"></ul>
         </section>
 
     </main>
@@ -89,6 +39,8 @@
     <footer class="footer page__footer">
       <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
+
+<!-- Попап профиля  -->
 
     <div class="popup">
       <div class="popup__container">
@@ -101,9 +53,39 @@
             <button type="submit" class="popup__button-retention">Сохранить</button>
           </fieldset>
         </form>
-
       </div>
     </div>
+
+<!-- Попап фотографии -->
+
+    <div class="popup popup__galery">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <h2 class="popup__text-description">Новое место</h2>
+        <form class="popup__form" name="popup">
+          <fieldset class="popup__contact-info">
+            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" value="">
+            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about"  value="">
+            <button type="submit" class="popup__button-retention">Создать</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <!-- - Попап открытия фотографии -->
+
+
+
+     <!-- Работа с п1 (фото и клонирование)  -->
+    <template id="image-template">
+      <li class="elements__element">
+        <img src="./images/zelenogradsk.jpg" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
+        <div class="elements__reaction">
+          <h2 class="elements__mesto-name">Зеленоградск</h2>
+          <button class="elements__heart" type="button"></button>
+        </div>
+      </li>
+    </template>
 
 <script src="./scripts/index.js"></script>
 </body>
