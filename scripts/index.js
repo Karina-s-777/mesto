@@ -85,10 +85,17 @@ const initialCards = [
 const cardTemplat = document.querySelector('#image-template').content;
 const listImage = document.querySelector('.elements__items');
 
+
 // Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
 
 const createCard = function (name, link, alt) {
 const cardElement = cardTemplat.querySelector('.elements__element').cloneNode(true);
+
+cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
+  const eventTarget = evt.target;
+  evt.target.classList.toggle('elements__heart_active');
+});
+
 cardElement.querySelector('.elements__mesto-name').textContent = name;
 cardElement.querySelector('.elements__mask-group').src = link;
 cardElement.querySelector('.elements__mask-group').alt = alt;
@@ -100,5 +107,9 @@ listImage.append(cardElement);
 initialCards.forEach(function (item) {
   createCard(item.name, item.link, item.alt)
 });
+
+
+
+
 
 
