@@ -7,8 +7,8 @@ const cardTemplat = document.querySelector('#image-template').content;
 const listImage = document.querySelector('.elements__items');
 
 // вводим остальные переменные, необходимые для работы: закрытие из попапа, открытие из профиля//
-const popupButtonCloseElement = popupElement.querySelector(".popup__button-close")
-const popupButtonOpenElement = document.querySelector(".profile__edit-button")
+const popupButtonCloseElementProfile = popupElement.querySelector(".popup__button-close")
+const popupButtonOpenElementProfile = document.querySelector(".profile__edit-button")
 
 const popupButtonOpenElementGalery = document.querySelector(".profile__add-button")
 
@@ -31,15 +31,29 @@ const linkInputTemplate = cardTemplat.querySelector(".elements__mask-group")
 const formElement = popupElement.querySelector(".popup__form")
 
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
-const popupOpen = function () {
-    popupElement.classList.add("popup_opened")
+const popupOpen = function (popupElemen) {
+  popupElemen.classList.add("popup_opened")
 }
+
+// открытие попап профиль //
+function popupOpenProfile () {
+  popupOpen(popupElementProfile)
+}
+
+popupButtonOpenElementProfile.addEventListener('click', popupOpenProfile)
+
+// открытие попап галерея //
+function popupOpenGalery () {
+  popupOpen(popupElementGalery)
+}
+
+popupButtonOpenElementGalery.addEventListener('click', popupOpenGalery)
 
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
 
-    imageInputGalery.value = imageInputTemplate.textContent;
-    linkInputGalery.value = linkInputTemplate.textContent;
+   // imageInputGalery.value = imageInputTemplate.textContent;//
+  //linkInputGalery.value = linkInputTemplate.textContent;//
 
 // вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости)//
 const popupClose = function () {
@@ -47,9 +61,8 @@ const popupClose = function () {
 }
 
 // вводим условия, при котором при нажатии на кнопки открытия и закрытия срабатывают описанные выше функции//
-popupButtonOpenElement.addEventListener('click', popupOpen)
-popupButtonCloseElement.addEventListener('click', popupClose)
-popupButtonOpenElementGalery.addEventListener('click', () => popupOpen(popupElementGalery))
+
+popupButtonCloseElementProfile.addEventListener('click', popupClose)
 
 // код пр5 //
  //popupButtonOpenElementTo.addEventListener('click', popupOpen) //
@@ -60,10 +73,6 @@ const handleFormSubmit = function (evt) {
     jobProfile.textContent = jobInput.value;
     nameProfile.textContent = nameInput.value;
     popupClose ()
-  evt.preventDefault();
-  jobProfile.textContent = jobInput.value;
-  nameProfile.textContent = nameInput.value;
-  popupClose ()
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
