@@ -42,7 +42,7 @@
 
 <!-- Попап профиля  -->
 
-    <div class="popup">
+    <div class="popup popup-profile">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
         <h2 class="popup__text-description">Редактировать профиль</h2>
@@ -58,36 +58,36 @@
 
 <!-- Попап фотографии -->
 
-    <div class="popup popup__galery">
-      <div class="popup__container">
-        <button class="popup__button-close" type="button"></button>
-        <h2 class="popup__text-description">Новое место</h2>
-        <form class="popup__form" name="popup">
-          <fieldset class="popup__contact-info">
-            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" value="">
-            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about"  value="">
-            <button type="submit" class="popup__button-retention">Создать</button>
-          </fieldset>
-        </form>
-      </div>
+<!-- Попап фотографии -->
+
+<div class="popup popup-galery">
+  <div class="popup__container">
+    <button class="popup__button-close" type="button"></button>
+    <h2 class="popup__text-description">Новое место</h2>
+    <form class="popup__form" name="popup">
+      <fieldset class="popup__contact-info">
+        <input type="text" id="input-name-image" name="input-name" class="popup__input popup__input_type_name-image" value="">
+        <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_link"  value="">
+        <button type="submit" class="popup__button-retention">Создать</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<!-- - Попап открытия фотографии -->
+
+
+
+ <!-- Работа с п1 (фото и клонирование)  -->
+<template id="image-template">
+  <li class="elements__element">
+    <img src="./images/zelenogradsk.jpg" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
+    <div class="elements__reaction">
+      <h2 class="elements__mesto-name">Зеленоградск</h2>
+      <button class="elements__heart" type="button"></button>
     </div>
-
-    <!-- - Попап открытия фотографии -->
-
-
-
-     <!-- Работа с п1 (фото и клонирование)  -->
-    <template id="image-template">
-      <li class="elements__element">
-        <img src="./images/zelenogradsk.jpg" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
-        <div class="elements__reaction">
-          <h2 class="elements__mesto-name">Зеленоградск</h2>
-          <button class="elements__heart" type="button"></button>
-        </div>
-      </li>
-    </template>
+  </li>
+</template>
 
 <script src="./scripts/index.js"></script>
 </body>
-
-</html>

@@ -1,9 +1,16 @@
 // вводим переменную popupElement, которой присваиваем селектор .popup//
 const popupElement = document.querySelector(".popup")
+const popupElementGalery = document.querySelector(".popup-galery")
+const popupElementProfile = document.querySelector(".popup-profile")
+
+const cardTemplat = document.querySelector('#image-template').content;
+const listImage = document.querySelector('.elements__items');
 
 // вводим остальные переменные, необходимые для работы: закрытие из попапа, открытие из профиля//
 const popupButtonCloseElement = popupElement.querySelector(".popup__button-close")
 const popupButtonOpenElement = document.querySelector(".profile__edit-button")
+
+const popupButtonOpenElementGalery = document.querySelector(".profile__add-button")
 
 // код пр5 //
 // const popupButtonOpenElementTo = document.querySelector(".profile__add-button") //
@@ -11,30 +18,48 @@ const popupButtonOpenElement = document.querySelector(".profile__edit-button")
 // вводим переменные - поля имя и описания в карточке пользователя в попап //
 const nameInput = popupElement.querySelector(".popup__input_type_name")
 const jobInput = popupElement.querySelector(".popup__input_type_about")
+
+const imageInputGalery = popupElementGalery.querySelector(".popup__input_type_name-image")
+const linkInputGalery = popupElementGalery.querySelector(".popup__input_type_link")
 // вводим переменные - поля имя и описания в карточке пользователя в профиле//
 const nameProfile = document.querySelector(".profile__user-name")
 const jobProfile = document.querySelector(".profile__user-info")
+
+const imageInputTemplate = cardTemplat.querySelector(".elements__mesto-name")
+const linkInputTemplate = cardTemplat.querySelector(".elements__mask-group")
 // вводим переменную = нашей форме попапа//
 const formElement = popupElement.querySelector(".popup__form")
+
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const popupOpen = function () {
     popupElement.classList.add("popup_opened")
+}
+
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
-}
+
+    imageInputGalery.value = imageInputTemplate.textContent;
+    linkInputGalery.value = linkInputTemplate.textContent;
+
 // вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости)//
 const popupClose = function () {
   popupElement.classList.remove("popup_opened")
 }
+
 // вводим условия, при котором при нажатии на кнопки открытия и закрытия срабатывают описанные выше функции//
 popupButtonOpenElement.addEventListener('click', popupOpen)
 popupButtonCloseElement.addEventListener('click', popupClose)
+popupButtonOpenElementGalery.addEventListener('click', () => popupOpen(popupElementGalery))
 
 // код пр5 //
  //popupButtonOpenElementTo.addEventListener('click', popupOpen) //
 
 // Создаем условия, при которых измененный нами в попап текст попадает в профиль после нажатия кнопки "сохранить" (При отправке формы срабатывает событие submit //
 const handleFormSubmit = function (evt) {
+    evt.preventDefault();
+    jobProfile.textContent = jobInput.value;
+    nameProfile.textContent = nameInput.value;
+    popupClose ()
   evt.preventDefault();
   jobProfile.textContent = jobInput.value;
   nameProfile.textContent = nameInput.value;
@@ -82,8 +107,6 @@ const initialCards = [
 
 // Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
 
-const cardTemplat = document.querySelector('#image-template').content;
-const listImage = document.querySelector('.elements__items');
 
 
 // Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
@@ -107,6 +130,7 @@ listImage.append(cardElement);
 initialCards.forEach(function (item) {
   createCard(item.name, item.link, item.alt)
 });
+
 
 
 
