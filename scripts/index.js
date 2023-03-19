@@ -145,7 +145,7 @@ const createCard = function (item) {
       cardElement.querySelector('.elements__trash').addEventListener('click', handleDelete);
   }
 
-  linkMesto.addEventListener('click', function (item) {
+  linkMesto.addEventListener('click', function () {
       imageOpenPopup.src = item.link;
       imageOpenPopup.alt = item.name;
       imageOpenPopupText.textContent = item.name;
