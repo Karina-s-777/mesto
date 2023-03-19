@@ -14,9 +14,6 @@ const popupButtonOpenElementProfile = document.querySelector(".profile__edit-but
 const popupButtonOpenElementGalery = document.querySelector(".profile__add-button")
 const popupButtonCloseElementGalery = popupElementGalery.querySelector(".popup__button-close")
 
-// код пр5 //
-// const popupButtonOpenElementTo = document.querySelector(".profile__add-button") //
-
 // вводим переменные - поля имя и описания в карточке пользователя в попап //
 const nameInput = popupElement.querySelector(".popup__input_type_name")
 const jobInput = popupElement.querySelector(".popup__input_type_about")
@@ -55,9 +52,6 @@ popupButtonOpenElementGalery.addEventListener('click', popupOpenGalery)
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
 
-   // imageInputGalery.value = imageInputTemplate.textContent;//
-  //linkInputGalery.value = linkInputTemplate.textContent;//
-
 // вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости)//
 const popupClose = function (popupElement) {
   popupElement.classList.remove("popup_opened")
@@ -74,7 +68,6 @@ const popupCloseGalery = function (popupElement) {
 }
 
 popupButtonCloseElementGalery.addEventListener('click', popupCloseGalery)
-
 
 // Создаем условия, при которых измененный нами в попап текст попадает в профиль после нажатия кнопки "сохранить" (При отправке формы срабатывает событие submit //
 const handleFormSubmitProfile = function (evt) {
@@ -127,14 +120,27 @@ const initialCards = [
 
 const createCard = function (item) {
   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
+  const nameMesto = cardElement.querySelector('.elements__mesto-name');
+  const linkMesto = cardElement.querySelector('.elements__mask-group');
 
+// лайк //
   cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
     const eventTarget = evt.target;
     evt.target.classList.toggle('elements__heart_active');
   });
 
-  const nameMesto = cardElement.querySelector('.elements__mesto-name');
-  const linkMesto = cardElement.querySelector('.elements__mask-group');
+  setEventListeners (cardElement)
+
+  // Удаление //
+
+  function handleDelete (evt) {
+    const cardDelete = evt.target.closest('.elements__element')
+    cardElement.remove()
+    }
+
+    function setEventListeners (cardElement) {
+      cardElement.querySelector('.elements__trash').addEventListener('click', handleDelete);
+    }
 
   nameMesto.textContent = item.name;
   linkMesto.src = item.link;
@@ -143,13 +149,11 @@ const createCard = function (item) {
   }
 
 // Теперь по порядку в карточки попадают данные из нашего массива с помощью функции и становятся на места аргументов функции createCard)//
-
 initialCards.forEach(function (item) {
   const card = createCard(item);
-   // Делаем так, чтобы наши клоны попадали в соответствующее место - в UL)//
-   listImage.append(card);
+// Делаем так, чтобы наши клоны попадали в соответствующее место - в UL)//
+  listImage.append(card);
 });
-
 
 // самбит для галереи //
 
