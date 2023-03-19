@@ -9,3 +9,8 @@
   top: 20px;
   right: 20px;
 }
+
+.elements__trash:hover {
+  opacity: 0.6;
+  cursor: url(../../../images/Pointer.png) 2 2, pointer;
+}

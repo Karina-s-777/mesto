@@ -125,7 +125,7 @@ const initialCards = [
 
 // Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
 
-const createCard = function (name, link, alt) {
+const createCard = function (item) {
   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
 
   cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
@@ -133,16 +133,19 @@ const createCard = function (name, link, alt) {
     evt.target.classList.toggle('elements__heart_active');
   });
 
-  cardElement.querySelector('.elements__mesto-name').textContent = name;
-  cardElement.querySelector('.elements__mask-group').src = link;
-  cardElement.querySelector('.elements__mask-group').alt = alt;
+  const nameMesto = cardElement.querySelector('.elements__mesto-name');
+  const linkMesto = cardElement.querySelector('.elements__mask-group');
+
+  nameMesto.textContent = item.name;
+  linkMesto.src = item.link;
+  linkMesto.alt = item.name;
   return (cardElement)
   }
 
 // Теперь по порядку в карточки попадают данные из нашего массива с помощью функции и становятся на места аргументов функции createCard)//
 
 initialCards.forEach(function (item) {
-  const card = createCard(item.name, item.link, item.alt);
+  const card = createCard(item);
    // Делаем так, чтобы наши клоны попадали в соответствующее место - в UL)//
    listImage.append(card);
 });
@@ -152,10 +155,12 @@ initialCards.forEach(function (item) {
 
 const handleFormSubmitGalery = function (evt) {
   evt.preventDefault();
-  cardElementGalery = createCard(imageInputTemplate.textContent = imageInputGalery.value, linkInputTemplate.textContent = linkInputGalery.value)
-  listImage.prepend(cardElementGalery);
+  const cardElementGalery = {name:imageInputGalery.value, link:linkInputGalery.value}
+  listImage.prepend(createCard (cardElementGalery));
   popupCloseGalery ()
 }
 
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
+
+
 
