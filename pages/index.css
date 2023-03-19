@@ -29,6 +29,7 @@
 @import url(../blocks/elements/__mask-group/elements__mask-group.css);
 @import url(../blocks/elements/__mesto-name/elements__mesto-name.css);
 @import url(../blocks/elements/__reaction/elements__reaction.css);
+@import url(../blocks/elements/__trash/elements__trash.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
