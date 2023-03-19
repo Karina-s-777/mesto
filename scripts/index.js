@@ -1,9 +1,10 @@
 // вводим переменную popupElement, которой присваиваем селектор .popup//
 const popupElement = document.querySelector(".popup")
-const popupElementGalery = document.querySelector(".popup-galery")
-const popupElementProfile = document.querySelector(".popup-profile")
+const popupElementGalery = document.querySelector(".popup_galery")
+const popupElementProfile = document.querySelector(".popup_profile")
 
-const cardTemplat = document.querySelector('#image-template').content;
+// Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
+const cardTemplate = document.querySelector('#image-template').content;
 const listImage = document.querySelector('.elements__items');
 
 // вводим остальные переменные, необходимые для работы: закрытие из попапа, открытие из профиля//
@@ -26,10 +27,11 @@ const linkInputGalery = popupElementGalery.querySelector(".popup__input_type_lin
 const nameProfile = document.querySelector(".profile__user-name")
 const jobProfile = document.querySelector(".profile__user-info")
 
-const imageInputTemplate = cardTemplat.querySelector(".elements__mesto-name")
-const linkInputTemplate = cardTemplat.querySelector(".elements__mask-group")
+const imageInputTemplate = cardTemplate.querySelector(".elements__mesto-name")
+const linkInputTemplate = cardTemplate.querySelector(".elements__mask-group")
 // вводим переменную = нашей форме попапа//
-const formElement = popupElement.querySelector(".popup__form")
+const formElementProfile = popupElementProfile.querySelector(".popup__form")
+const formElementGalery = popupElementGalery.querySelector(".popup__form")
 
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const popupOpen = function (popupElemen) {
@@ -73,22 +75,16 @@ const popupCloseGalery = function (popupElement) {
 
 popupButtonCloseElementGalery.addEventListener('click', popupCloseGalery)
 
-// вводим условия, при котором при нажатии на кнопки открытия и закрытия срабатывают описанные выше функции//
-
-
-
-// код пр5 //
- //popupButtonOpenElementTo.addEventListener('click', popupOpen) //
 
 // Создаем условия, при которых измененный нами в попап текст попадает в профиль после нажатия кнопки "сохранить" (При отправке формы срабатывает событие submit //
-const handleFormSubmit = function (evt) {
+const handleFormSubmitProfile = function (evt) {
     evt.preventDefault();
     jobProfile.textContent = jobInput.value;
     nameProfile.textContent = nameInput.value;
     popupCloseProfile ()
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElementProfile.addEventListener('submit', handleFormSubmitProfile);
 
 // Работа с п1 (фото и клонирование) //
 
@@ -127,35 +123,39 @@ const initialCards = [
   }
 ];
 
-// Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
-
-
-
 // Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
 
 const createCard = function (name, link, alt) {
-const cardElement = cardTemplat.querySelector('.elements__element').cloneNode(true);
+  const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
 
-cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
-  const eventTarget = evt.target;
-  evt.target.classList.toggle('elements__heart_active');
-});
+  cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
+    const eventTarget = evt.target;
+    evt.target.classList.toggle('elements__heart_active');
+  });
 
-cardElement.querySelector('.elements__mesto-name').textContent = name;
-cardElement.querySelector('.elements__mask-group').src = link;
-cardElement.querySelector('.elements__mask-group').alt = alt;
+  cardElement.querySelector('.elements__mesto-name').textContent = name;
+  cardElement.querySelector('.elements__mask-group').src = link;
+  cardElement.querySelector('.elements__mask-group').alt = alt;
+  return (cardElement)
+  }
 
-// Делаем так, чтобы наши клоны попадали в соответствующее место - в UL)//
-listImage.append(cardElement);
-}
 // Теперь по порядку в карточки попадают данные из нашего массива с помощью функции и становятся на места аргументов функции createCard)//
+
 initialCards.forEach(function (item) {
-  createCard(item.name, item.link, item.alt)
+  const card = createCard(item.name, item.link, item.alt);
+   // Делаем так, чтобы наши клоны попадали в соответствующее место - в UL)//
+   listImage.append(card);
 });
 
 
+// самбит для галереи //
 
+const handleFormSubmitGalery = function (evt) {
+  evt.preventDefault();
+  cardElementGalery = createCard(imageInputTemplate.textContent = imageInputGalery.value, linkInputTemplate.textContent = linkInputGalery.value)
+  listImage.prepend(cardElementGalery);
+  popupCloseGalery ()
+}
 
-
-
+formElementGalery.addEventListener('submit', handleFormSubmitGalery);
 
