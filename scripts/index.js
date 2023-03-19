@@ -2,6 +2,7 @@
 const popupElement = document.querySelector(".popup")
 const popupElementGalery = document.querySelector(".popup_galery")
 const popupElementProfile = document.querySelector(".popup_profile")
+const popupElementImage = document.querySelector('.popup_open-image-galery')
 
 // Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
 const cardTemplate = document.querySelector('#image-template').content;
@@ -30,6 +31,8 @@ const linkInputTemplate = cardTemplate.querySelector(".elements__mask-group")
 const formElementProfile = popupElementProfile.querySelector(".popup__form")
 const formElementGalery = popupElementGalery.querySelector(".popup__form")
 
+const imageOpenPopup = document.querySelector('.popup__image-open');
+const imageOpenPopupText = document.querySelector('.popup__text-open');
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const popupOpen = function (popupElemen) {
   popupElemen.classList.add("popup_opened")
@@ -131,16 +134,23 @@ const createCard = function (item) {
 
   setEventListeners (cardElement)
 
-  // Удаление //
+// Удаление //
 
   function handleDelete (evt) {
     const cardDelete = evt.target.closest('.elements__element')
     cardElement.remove()
-    }
+  }
 
-    function setEventListeners (cardElement) {
+  function setEventListeners (cardElement) {
       cardElement.querySelector('.elements__trash').addEventListener('click', handleDelete);
-    }
+  }
+
+  linkMesto.addEventListener('click', function (item) {
+      imageOpenPopup.src = item.link;
+      imageOpenPopup.alt = item.name;
+      imageOpenPopupText.textContent = item.name;
+      popupOpen(popupElementImage)
+  })
 
   nameMesto.textContent = item.name;
   linkMesto.src = item.link;
