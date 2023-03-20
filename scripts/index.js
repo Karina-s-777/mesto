@@ -12,7 +12,6 @@ const listImage = document.querySelector('.elements__items');
 const popupButtonCloseElementProfile = popupElement.querySelector(".popup__button-close")
 const popupButtonOpenElementProfile = document.querySelector(".profile__edit-button")
 
-
 const popupButtonOpenElementGalery = document.querySelector(".profile__add-button")
 const popupButtonCloseElementGalery = popupElementGalery.querySelector(".popup__button-close")
 

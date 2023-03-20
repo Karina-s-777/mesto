@@ -3,12 +3,6 @@
   border-radius: 10px;
   align-self: center;
   position: relative;
-  max-width: 75vw;
-  max-height: 75vh;
-}
+  }
 
-@media screen and (max-width: 767px) {
-  .popup__container {
-      width: 282px;
-}
-}
+
