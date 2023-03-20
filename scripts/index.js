@@ -12,8 +12,11 @@ const listImage = document.querySelector('.elements__items');
 const popupButtonCloseElementProfile = popupElement.querySelector(".popup__button-close")
 const popupButtonOpenElementProfile = document.querySelector(".profile__edit-button")
 
+
 const popupButtonOpenElementGalery = document.querySelector(".profile__add-button")
 const popupButtonCloseElementGalery = popupElementGalery.querySelector(".popup__button-close")
+
+const popupButtonCloseElementImage = popupElementImage.querySelector('.popup__button-close')
 
 // вводим переменные - поля имя и описания в карточке пользователя в попап //
 const nameInput = popupElement.querySelector(".popup__input_type_name")
@@ -98,9 +101,9 @@ const initialCards = [
     alt: 'фотография с изображением Королевских ворот в Калининграде'
   },
   {
-    name: 'Куршская коса"',
+    name: 'Куршская коса',
     link: './images/kurskaj-kosa.jpg',
-    alt: 'фотография с изображением Куршской косы"'
+    alt: 'фотография с изображением Куршской косы'
   },
   {
     name: 'Зеленоградск',
@@ -125,6 +128,7 @@ const createCard = function (item) {
   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
   const nameMesto = cardElement.querySelector('.elements__mesto-name');
   const linkMesto = cardElement.querySelector('.elements__mask-group');
+
 
 // лайк //
   cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
@@ -151,6 +155,12 @@ const createCard = function (item) {
       imageOpenPopupText.textContent = item.name;
       popupOpen(popupElementImage)
   })
+
+  const popupCloseImage = function (popupElement) {
+    popupClose(popupElementImage)
+  }
+
+  popupButtonCloseElementImage.addEventListener('click', popupCloseImage)
 
   nameMesto.textContent = item.name;
   linkMesto.src = item.link;
