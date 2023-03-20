@@ -41,18 +41,18 @@ const popupOpen = function (popupElemen) {
 }
 
 // открытие попап профиль //
-function popupOpenProfile () {
+function openPopupProfile () {
   popupOpen(popupElementProfile)
 }
 
-popupButtonOpenElementProfile.addEventListener('click', popupOpenProfile)
+popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
 
 // открытие попап галерея //
-function popupOpenGalery () {
+function openPopupGalery () {
   popupOpen(popupElementGalery)
 }
 
-popupButtonOpenElementGalery.addEventListener('click', popupOpenGalery)
+popupButtonOpenElementGalery.addEventListener('click', openPopupGalery)
 
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
@@ -62,24 +62,24 @@ const popupClose = function (popupElement) {
   popupElement.classList.remove("popup_opened")
 }
 
-const popupCloseProfile = function (popupElement) {
+const closePopupProfile = function (popupElement) {
   popupClose(popupElementProfile)
 }
 
-popupButtonCloseElementProfile.addEventListener('click', popupCloseProfile)
+popupButtonCloseElementProfile.addEventListener('click', closePopupProfile)
 
-const popupCloseGalery = function (popupElement) {
+const closePopupGalery = function (popupElement) {
   popupClose(popupElementGalery)
 }
 
-popupButtonCloseElementGalery.addEventListener('click', popupCloseGalery)
+popupButtonCloseElementGalery.addEventListener('click', closePopupGalery)
 
 // Создаем условия, при которых измененный нами в попап текст попадает в профиль после нажатия кнопки "сохранить" (При отправке формы срабатывает событие submit //
 const handleFormSubmitProfile = function (evt) {
     evt.preventDefault();
     jobProfile.textContent = jobInput.value;
     nameProfile.textContent = nameInput.value;
-    popupCloseProfile ()
+    closePopupProfile ()
 }
 
 formElementProfile.addEventListener('submit', handleFormSubmitProfile);
@@ -155,11 +155,11 @@ const createCard = function (item) {
       popupOpen(popupElementImage)
   })
 
-  const popupCloseImage = function (popupElement) {
+  const closePopupImage = function (popupElement) {
     popupClose(popupElementImage)
   }
 
-  popupButtonCloseElementImage.addEventListener('click', popupCloseImage)
+  popupButtonCloseElementImage.addEventListener('click', closePopupImage)
 
   nameMesto.textContent = item.name;
   linkMesto.src = item.link;
@@ -180,7 +180,7 @@ const handleFormSubmitGalery = function (evt) {
   evt.preventDefault();
   const cardElementGalery = {name:imageInputGalery.value, link:linkInputGalery.value}
   listImage.prepend(createCard (cardElementGalery));
-  popupCloseGalery ()
+  closePopupGalery ()
 }
 
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
