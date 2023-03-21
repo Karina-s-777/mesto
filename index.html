@@ -48,8 +48,8 @@
         <h2 class="popup__text-description">Редактировать профиль</h2>
         <form class="popup__form" name="popup">
           <fieldset class="popup__contact-info">
-            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" value="">
-            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about"  value="">
+            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" required value="">
+            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about" required value="">
             <button type="submit" class="popup__button-retention">Сохранить</button>
           </fieldset>
         </form>
@@ -66,8 +66,8 @@
     <h2 class="popup__text-description">Новое место</h2>
     <form class="popup__form" name="popup">
       <fieldset class="popup__contact-info">
-        <input type="text" id="input-name-image" name="input-name" class="popup__input popup__input_type_name-image" placeholder="Название" value="">
-        <input type="text" id="input-about-image" name="input-about" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" value="">
+        <input type="text" id="input-name-image" name="input-name" class="popup__input popup__input_type_name-image" placeholder="Название" required value="">
+        <input type="text" id="input-about-image" name="input-about" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required value="">
         <button type="submit" class="popup__button-retention">Создать</button>
       </fieldset>
     </form>
@@ -98,6 +98,7 @@
   </li>
 </template>
 
+<script src="./scripts/data.js"></script>
 <script src="./scripts/index.js"></script>
 </body>
 </html>

@@ -36,40 +36,42 @@ const formElementGalery = popupElementGalery.querySelector(".popup__form")
 const imageOpenPopup = document.querySelector('.popup__image-open');
 const imageOpenPopupText = document.querySelector('.popup__text-open');
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
-const popupOpen = function (popupElemen) {
+const openPopup = function (popupElemen) {
   popupElemen.classList.add("popup_opened")
 }
 
 // открытие попап профиль //
 function openPopupProfile () {
-  popupOpen(popupElementProfile)
+  openPopup(popupElementProfile)
 }
 
 popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
 
+nameInput.value = nameProfile.textContent;
+jobInput.value = jobProfile.textContent;
+
 // открытие попап галерея //
 function openPopupGalery () {
-  popupOpen(popupElementGalery)
+  openPopup(popupElementGalery)
 }
 
 popupButtonOpenElementGalery.addEventListener('click', openPopupGalery)
 
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
+
 
 // вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости)//
-const popupClose = function (popupElement) {
+const closePopup = function (popupElement) {
   popupElement.classList.remove("popup_opened")
 }
 
 const closePopupProfile = function (popupElement) {
-  popupClose(popupElementProfile)
+  closePopup(popupElementProfile)
 }
 
 popupButtonCloseElementProfile.addEventListener('click', closePopupProfile)
 
 const closePopupGalery = function (popupElement) {
-  popupClose(popupElementGalery)
+  closePopup(popupElementGalery)
 }
 
 popupButtonCloseElementGalery.addEventListener('click', closePopupGalery)
@@ -86,40 +88,6 @@ formElementProfile.addEventListener('submit', handleFormSubmitProfile);
 
 // Работа с п1 (фото и клонирование) //
 
-// Создаем массив с данными //
-
-const initialCards = [
-  {
-    name: 'Рыбная деревня',
-    link: './images/kaliningrad_fish.jpg',
-    alt: 'фотография с изображением Рыбной деревни в Калининграде'
-  },
-  {
-    name: 'Королевские ворота',
-    link: './images/korolevskie-vorota.jpg',
-    alt: 'фотография с изображением Королевских ворот в Калининграде'
-  },
-  {
-    name: 'Куршская коса',
-    link: './images/kurskaj-kosa.jpg',
-    alt: 'фотография с изображением Куршской косы'
-  },
-  {
-    name: 'Зеленоградск',
-    link: './images/zelenogradsk.jpg',
-    alt: 'фотография с изображением города Зеленоградска'
-  },
-  {
-    name: 'Зеленоградск',
-    link: './images/zelenogradsk-cat.jpg',
-    alt: 'фотография с изображением стрит-арта в городе Зеленоградске (города котов)'
-  },
-  {
-    name: 'Светлогорск',
-    link: './images/Svetlogorsk.jpg',
-    alt: 'фотография с изображением города Светлогорск'
-  }
-];
 
 // Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
 
@@ -135,7 +103,7 @@ const createCard = function (item) {
     evt.target.classList.toggle('elements__heart_active');
   });
 
-  setEventListeners (cardElement)
+  setEventListener (cardElement)
 
 // Удаление //
 
@@ -144,7 +112,7 @@ const createCard = function (item) {
     cardElement.remove()
   }
 
-  function setEventListeners (cardElement) {
+  function setEventListener (cardElement) {
       cardElement.querySelector('.elements__trash').addEventListener('click', handleDelete);
   }
 
@@ -152,20 +120,22 @@ const createCard = function (item) {
       imageOpenPopup.src = item.link;
       imageOpenPopup.alt = item.name;
       imageOpenPopupText.textContent = item.name;
-      popupOpen(popupElementImage)
+      openPopup(popupElementImage)
   })
-
-  const closePopupImage = function (popupElement) {
-    popupClose(popupElementImage)
-  }
-
-  popupButtonCloseElementImage.addEventListener('click', closePopupImage)
 
   nameMesto.textContent = item.name;
   linkMesto.src = item.link;
   linkMesto.alt = item.name;
-  return (cardElement)
+  return cardElement
   }
+
+  //  Закрытие попапа с картинкой // 
+
+  const closePopupImage = function (popupElement) {
+    closePopup(popupElementImage)
+  }
+
+  popupButtonCloseElementImage.addEventListener('click', closePopupImage)
 
 // Теперь по порядку в карточки попадают данные из нашего массива с помощью функции и становятся на места аргументов функции createCard)//
 initialCards.forEach(function (item) {
@@ -181,6 +151,7 @@ const handleFormSubmitGalery = function (evt) {
   const cardElementGalery = {name:imageInputGalery.value, link:linkInputGalery.value}
   listImage.prepend(createCard (cardElementGalery));
   closePopupGalery ()
+  evt.target.reset()
 }
 
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
