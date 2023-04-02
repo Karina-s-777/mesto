@@ -44,11 +44,13 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__text-description/popup__text-description.css);
 @import url(../blocks/popup/__container-image/popup__container-image.css);
 @import url(../blocks/popup/__image-open/popup__image-open.css);
 @import url(../blocks/popup/__text-open/popup__text-open.css);
 @import url(../blocks/popup/__figure-image/popup__figure-image.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 
 @import url(../blocks/popup/_opened/popup_opened.css);
 

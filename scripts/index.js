@@ -129,7 +129,7 @@ const createCard = function (item) {
   return cardElement
   }
 
-  //  Закрытие попапа с картинкой // 
+  //  Закрытие попапа с картинкой //
 
   const closePopupImage = function (popupElement) {
     closePopup(popupElementImage)
@@ -155,6 +155,10 @@ const handleFormSubmitGalery = function (evt) {
 }
 
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
+
+// ПР 6. Настройка валидации //
+
+
 
 
 

@@ -44,12 +44,15 @@
 
     <div class="popup popup_profile">
       <div class="popup__container">
-        <button class="popup__button-close" type="button"></button>
+        <button class="popup__button-close popup__button_disabled" type="button"></button>
         <h2 class="popup__text-description">Редактировать профиль</h2>
-        <form class="popup__form" name="popup">
+        <form class="popup__form" name="popup" novalidate>
           <fieldset class="popup__contact-info">
-            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" required value="">
-            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about" required value="">
+            <!-- Класс для input с красной рамкой будет появляться через JS (popup__input_type_error)  -->
+            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" required minlength="2" maxlength="40" value="">
+            <span class="popup__input-error input-name-error"></span>
+            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about" required minlength="2" maxlength="200" value="">
+            <span class="popup__input-error input-about-error"></span>
             <button type="submit" class="popup__button-retention">Сохранить</button>
           </fieldset>
         </form>
@@ -58,16 +61,16 @@
 
 <!-- Попап фотографии -->
 
-<!-- Попап фотографии -->
-
 <div class="popup popup_galery">
   <div class="popup__container">
     <button class="popup__button-close" type="button"></button>
     <h2 class="popup__text-description">Новое место</h2>
-    <form class="popup__form" name="popup">
+    <form class="popup__form" name="popup" novalidate>
       <fieldset class="popup__contact-info">
-        <input type="text" id="input-name-image" name="input-name" class="popup__input popup__input_type_name-image" placeholder="Название" required value="">
-        <input type="text" id="input-about-image" name="input-about" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required value="">
+        <input type="text" id="input-name-image" name="input-name" class="popup__input popup__input_type_name-image" placeholder="Название" required minlength="2" maxlength="30" value="">
+        <span class="popup__input-error input-name-image-error"></span>
+        <input type="url" id="input-about-image" name="input-about" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required value="">
+        <span class="popup__input-error input-about-image-error "></span>
         <button type="submit" class="popup__button-retention">Создать</button>
       </fieldset>
     </form>
@@ -99,6 +102,8 @@
 </template>
 
 <script src="./scripts/data.js"></script>
+<script src="./scripts/validate.js"></script>
 <script src="./scripts/index.js"></script>
+
 </body>
 </html>
