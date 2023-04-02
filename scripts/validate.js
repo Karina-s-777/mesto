@@ -28,12 +28,35 @@ const checkInputValidity = (formElement, inputElement) => {
   }
  };
 
+ /* Функция обходит массив полей и отвечает на вопрос: «Есть ли здесь хотя бы одно поле, которое не прошло валидацию?». */
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+  }
+/* Функция возвращает true, если в массиве inputList есть хотя бы один невалидный input. Если все поля валидны — false */
+
+/* Функцию, которая отвечает за блокировку кнопки «Отправить» */
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+   buttonElement.classList.add('popup__button-retention_disabled');
+ } else {
+   buttonElement.classList.remove('popup__button-retention_disabled');
+ }
+ }
+
 const setEventListeners = (formElement) => {
    /* inputList — массив из всех элементов с классом popup__input, которые есть в форме */
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonElement = formElement.querySelector('.popup__button-retention');
+  /* Проверяем состояние кнопки при первой загрузке страницы. Кнопка перестанет быть активной до ввода данных в одно из полей. */
+  toggleButtonState(inputList, buttonElement);
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
    checkInputValidity(formElement, inputElement);
+   /* Проверяем состояние кнопки при каждом изменении символа в любом из полей. */
+   toggleButtonState(inputList, buttonElement);
  });
   });
 }
@@ -46,13 +69,16 @@ const enableValidation = () => {
     formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
   });
+/* fieldsetList -массив из всех элементов с классом popup__contact-info внутри текущей формы — formElement */
+  const fieldsetList = Array.from(formElement.querySelectorAll('.popup__contact-info'));
+   fieldsetList.forEach((fieldSet) => {
+  setEventListeners(fieldSet);
+    });
+  });
+};
 
-    setEventListeners(formElement);
-});
-}
 
 enableValidation ()
-
 
 
 
