@@ -35,8 +35,10 @@ const formElementGalery = popupElementGalery.querySelector(".popup__form")
 
 const imageOpenPopup = document.querySelector('.popup__image-open');
 const imageOpenPopupText = document.querySelector('.popup__text-open');
+
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const openPopup = function (popupElemen) {
+  document.addEventListener('keydown', closePopupByClickOnEscape);
   popupElemen.classList.add("popup_opened")
 }
 
@@ -57,16 +59,37 @@ function openPopupGalery () {
 
 popupButtonOpenElementGalery.addEventListener('click', openPopupGalery)
 
-
-
 // вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости)//
 const closePopup = function (popupElement) {
-  popupElement.classList.remove("popup_opened")
+  popupElement.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupByClickOnEscape);
 }
+
+const popupList = Array.from(document.querySelectorAll('.popup'))
+
+const closePopupByClickOnOverlay = (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(event.currentTarget)
+  }
+}
+
+popupList.forEach((popupElement) => {
+  popupElement.addEventListener('click', closePopupByClickOnOverlay)
+})
+
+const closePopupByClickOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_opened')
+        closePopup(popupOpened)
+      }
+      }
 
 const closePopupProfile = function (popupElement) {
   closePopup(popupElementProfile)
 }
+
+//popupElement.addEventListener('click', closePopupByClickOnOverlay)
+//popupElement.addEventListener('keydown', closePopupByClickOnEscape)
 
 popupButtonCloseElementProfile.addEventListener('click', closePopupProfile)
 
@@ -157,8 +180,3 @@ const handleFormSubmitGalery = function (evt) {
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
 
 // ПР 6. Настройка валидации //
-
-
-
-
-
