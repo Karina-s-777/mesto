@@ -36,6 +36,9 @@ const formElementGalery = popupElementGalery.querySelector(".popup__form")
 const imageOpenPopup = document.querySelector('.popup__image-open');
 const imageOpenPopupText = document.querySelector('.popup__text-open');
 
+nameInput.value = nameProfile.textContent;
+jobInput.value = jobProfile.textContent;
+
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const openPopup = function (popupElemen) {
   document.addEventListener('keydown', closePopupByClickOnEscape);
@@ -44,16 +47,19 @@ const openPopup = function (popupElemen) {
 
 // открытие попап профиль //
 function openPopupProfile () {
+  resetErrorOpenPopup (formElementProfile)
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
   openPopup(popupElementProfile)
 }
 
 popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
 
-nameInput.value = nameProfile.textContent;
-jobInput.value = jobProfile.textContent;
-
 // открытие попап галерея //
 function openPopupGalery () {
+  resetErrorOpenPopup (formElementGalery)
+  imageInputGalery.value = imageInputTemplate.textContent;
+  linkInputGalery.value = linkInputTemplate.textContent;
   openPopup(popupElementGalery)
 }
 
@@ -88,9 +94,6 @@ const closePopupProfile = function (popupElement) {
   closePopup(popupElementProfile)
 }
 
-//popupElement.addEventListener('click', closePopupByClickOnOverlay)
-//popupElement.addEventListener('keydown', closePopupByClickOnEscape)
-
 popupButtonCloseElementProfile.addEventListener('click', closePopupProfile)
 
 const closePopupGalery = function (popupElement) {
@@ -108,9 +111,6 @@ const handleFormSubmitProfile = function (evt) {
 }
 
 formElementProfile.addEventListener('submit', handleFormSubmitProfile);
-
-// Работа с п1 (фото и клонирование) //
-
 
 // Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
 
@@ -179,4 +179,4 @@ const handleFormSubmitGalery = function (evt) {
 
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
 
-// ПР 6. Настройка валидации //
+enableValidation (validationConfig)
