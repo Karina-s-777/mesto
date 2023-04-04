@@ -36,9 +36,6 @@ const formElementGalery = popupElementGalery.querySelector(".popup__form")
 const imageOpenPopup = document.querySelector('.popup__image-open');
 const imageOpenPopupText = document.querySelector('.popup__text-open');
 
-nameInput.value = nameProfile.textContent;
-jobInput.value = jobProfile.textContent;
-
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const openPopup = function (popupElemen) {
   document.addEventListener('keydown', closePopupByClickOnEscape);
@@ -56,10 +53,9 @@ function openPopupProfile () {
 popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
 
 // открытие попап галерея //
-function openPopupGalery () {
+function openPopupGalery (e) {
   resetErrorOpenPopup (formElementGalery)
-  imageInputGalery.value = imageInputTemplate.textContent;
-  linkInputGalery.value = linkInputTemplate.textContent;
+  formElementGalery.reset();
   openPopup(popupElementGalery)
 }
 
