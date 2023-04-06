@@ -41,11 +41,17 @@ inputElement.addEventListener('input', function () {
  });
 }
 
+/* Функция отключения кнопки ('disabled') */
+
+const disableButton = (buttonElement, {inactiveButtonClass}) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true)
+}
+
   /* Функцию, которая отвечает за блокировку кнопки «Отправить» */
   const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass, ...rest}) => {
     if (hasInvalidInput(inputList)) {
-     buttonElement.classList.add(inactiveButtonClass);
-     buttonElement.setAttribute('disabled', true)
+      disableButton(buttonElement, {inactiveButtonClass})
    } else {
      buttonElement.classList.remove(inactiveButtonClass);
      buttonElement.removeAttribute('disabled', false)

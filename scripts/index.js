@@ -16,6 +16,8 @@ const popupButtonOpenElementGalery = document.querySelector(".profile__add-butto
 const popupButtonCloseElementGalery = popupElementGalery.querySelector(".popup__button-close")
 
 const popupButtonCloseElementImage = popupElementImage.querySelector('.popup__button-close')
+// переменная = кнопке "создать" в попапе галереи //
+const popupButtonCloseCreate = popupElementGalery.querySelector(".popup__button-retention")
 
 // вводим переменные - поля имя и описания в карточке пользователя в попап //
 const nameInput = popupElement.querySelector(".popup__input_type_name")
@@ -169,6 +171,7 @@ const handleFormSubmitGalery = function (evt) {
   evt.preventDefault();
   const cardElementGalery = {name:imageInputGalery.value, link:linkInputGalery.value}
   listImage.prepend(createCard (cardElementGalery));
+  disableButton (popupButtonCloseCreate, validationConfig )
   closePopupGalery ()
   evt.target.reset()
 }
