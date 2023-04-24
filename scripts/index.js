@@ -1,3 +1,8 @@
+import Card from "./card.js";
+import FormValidator from "./formValidator.js";
+import {initialCards} from "./data.js";
+
+
 // вводим переменную popupElement, которой присваиваем селектор .popup//
 const popupElement = document.querySelector(".popup")
 const popupElementGalery = document.querySelector(".popup_galery")
@@ -5,7 +10,7 @@ const popupElementProfile = document.querySelector(".popup_profile")
 const popupElementImage = document.querySelector('.popup_open-image-galery')
 
 // Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
-const cardTemplate = document.querySelector('#image-template').content;
+const selectorTemplate = '#image-template';
 const listImage = document.querySelector('.elements__items');
 
 // вводим остальные переменные, необходимые для работы: закрытие из попапа, открытие из профиля//
@@ -29,8 +34,7 @@ const linkInputGalery = popupElementGalery.querySelector(".popup__input_type_lin
 const nameProfile = document.querySelector(".profile__user-name")
 const jobProfile = document.querySelector(".profile__user-info")
 
-const imageInputTemplate = cardTemplate.querySelector(".elements__mesto-name")
-const linkInputTemplate = cardTemplate.querySelector(".elements__mask-group")
+
 // вводим переменную = нашей форме попапа//
 const formElementProfile = popupElementProfile.querySelector(".popup__form")
 const formElementGalery = popupElementGalery.querySelector(".popup__form")
@@ -38,37 +42,75 @@ const formElementGalery = popupElementGalery.querySelector(".popup__form")
 const imageOpenPopup = document.querySelector('.popup__image-open');
 const imageOpenPopupText = document.querySelector('.popup__text-open');
 
+// ----------------- //
+const validationConfig = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-retention',
+  inactiveButtonClass: 'popup__button-retention_disabled',
+  inputErrorClass: 'popup__input_type_error',
+   /* класс активации ошибки спан */
+  errorClass: 'popup__input-error_active',
+}
+
+const validationNewConfigFormsProfile = new FormValidator (validationConfig, formElementProfile);
+const validationNewConfigFormsGalery = new FormValidator (validationConfig, formElementGalery);
+console.log(validationNewConfigFormsProfile)
+validationNewConfigFormsProfile.enableValidation()
+validationNewConfigFormsGalery.enableValidation()
+// ----------------- //
+
 // вводим переменную = фунции, которая добавляет класс попапу с соответствующими стилями + заполняет значения в попам = значениям текста в соответветствующих полях в профиле//
 const openPopup = function (popupElemen) {
   document.addEventListener('keydown', closePopupByClickOnEscape);
   popupElemen.classList.add("popup_opened")
 }
 
-// открытие попап профиль //
+// Функция открытия попап профиль //
 function openPopupProfile () {
-  resetErrorOpenPopup (formElementProfile)
+  validationNewConfigFormsProfile.resetErrorOpenPopup()
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupElementProfile)
 }
 
-popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
-
-// открытие попап галерея //
+// Функция открытия попап галерея //
 function openPopupGalery (e) {
-  resetErrorOpenPopup (formElementGalery)
+  validationNewConfigFormsGalery.resetErrorOpenPopup()
   formElementGalery.reset();
   openPopup(popupElementGalery)
 }
 
+// Слушатели открытия попапов галерея и профиль //
+popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
 popupButtonOpenElementGalery.addEventListener('click', openPopupGalery)
 
-// вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости)//
+// ----------------- //
+
+// вводим переменную = функции, которая при нажатии на соответствующию кнопку убирает класс попапа (класс видимости) - раздел ЗАКРЫТИЕ//
 const closePopup = function (popupElement) {
   popupElement.classList.remove("popup_opened");
   document.removeEventListener('keydown', closePopupByClickOnEscape);
 }
 
+const closePopupProfile = function (popupElement) {
+  closePopup(popupElementProfile)
+}
+
+const closePopupGalery = function (popupElement) {
+  closePopup(popupElementGalery)
+}
+
+const closePopupImage = function (popupElement) {
+  closePopup(popupElementImage)
+}
+
+
+popupButtonCloseElementProfile.addEventListener('click', closePopupProfile)
+popupButtonCloseElementGalery.addEventListener('click', closePopupGalery)
+popupButtonCloseElementImage.addEventListener('click', closePopupImage)
+
+
+// Закрытие по оверлэй //
 const popupList = Array.from(document.querySelectorAll('.popup'))
 
 const closePopupByClickOnOverlay = (event) => {
@@ -81,6 +123,7 @@ popupList.forEach((popupElement) => {
   popupElement.addEventListener('click', closePopupByClickOnOverlay)
 })
 
+// Закрытие на Escape//
 const closePopupByClickOnEscape = (event) => {
       if (event.key === 'Escape') {
         const popupOpened = document.querySelector('.popup_opened')
@@ -88,17 +131,17 @@ const closePopupByClickOnEscape = (event) => {
       }
       }
 
-const closePopupProfile = function (popupElement) {
-  closePopup(popupElementProfile)
+// ----------------- //
+
+// Клонирование в новую переменную тимплей => в клон попадают соответствующие значения фото и подписи через функцию creatcard )//
+
+function createCardNew (data) {
+  const card = new Card (data, selectorTemplate, openPopupImage);
+  const cardElementNew = card.createCard();
+  return cardElementNew;
 }
 
-popupButtonCloseElementProfile.addEventListener('click', closePopupProfile)
-
-const closePopupGalery = function (popupElement) {
-  closePopup(popupElementGalery)
-}
-
-popupButtonCloseElementGalery.addEventListener('click', closePopupGalery)
+// ----------------- //
 
 // Создаем условия, при которых измененный нами в попап текст попадает в профиль после нажатия кнопки "сохранить" (При отправке формы срабатывает событие submit //
 const handleFormSubmitProfile = function (evt) {
@@ -110,72 +153,32 @@ const handleFormSubmitProfile = function (evt) {
 
 formElementProfile.addEventListener('submit', handleFormSubmitProfile);
 
-// Создаем функцию, при которой у нас клонируется в новую переменную наш тимплей, а далее в клона попадают соответствующие значения фото и подписи)//
+// ----------------- //
 
-const createCard = function (item) {
-  const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
-  const nameMesto = cardElement.querySelector('.elements__mesto-name');
-  const linkMesto = cardElement.querySelector('.elements__mask-group');
+// Функция открытия попапа с картинкой //
+function openPopupImage (data) {
+  imageOpenPopup.src = data.link;
+  imageOpenPopup.alt = data.name;
+  imageOpenPopupText.textContent = data.name;
+  openPopup(popupElementImage)
+}
 
-
-// лайк //
-  cardElement.querySelector('.elements__heart').addEventListener('click', function (evt) {
-    const eventTarget = evt.target;
-    evt.target.classList.toggle('elements__heart_active');
-  });
-
-  setEventListener (cardElement)
-
-// Удаление //
-
-  function handleDelete (evt) {
-    const cardDelete = evt.target.closest('.elements__element')
-    cardElement.remove()
-  }
-
-  function setEventListener (cardElement) {
-      cardElement.querySelector('.elements__trash').addEventListener('click', handleDelete);
-  }
-
-  linkMesto.addEventListener('click', function () {
-      imageOpenPopup.src = item.link;
-      imageOpenPopup.alt = item.name;
-      imageOpenPopupText.textContent = item.name;
-      openPopup(popupElementImage)
-  })
-
-  nameMesto.textContent = item.name;
-  linkMesto.src = item.link;
-  linkMesto.alt = item.name;
-  return cardElement
-  }
-
-  //  Закрытие попапа с картинкой //
-
-  const closePopupImage = function (popupElement) {
-    closePopup(popupElementImage)
-  }
-
-  popupButtonCloseElementImage.addEventListener('click', closePopupImage)
-
-// Теперь по порядку в карточки попадают данные из нашего массива с помощью функции и становятся на места аргументов функции createCard)//
-initialCards.forEach(function (item) {
-  const card = createCard(item);
+// Мы переделали функцию, чтобы при переборе у нас из класса Card создавались карточки при загрузке//
+initialCards.forEach(data => {
 // Делаем так, чтобы наши клоны попадали в соответствующее место - в UL)//
-  listImage.append(card);
+ listImage.append(createCardNew(data));
 });
 
-// самбит для галереи //
+// ----------------- //
 
+// самбит для галереи (создаем карточку, добавляем в ul, отключам кнопку и закрываем попап) //
 const handleFormSubmitGalery = function (evt) {
   evt.preventDefault();
   const cardElementGalery = {name:imageInputGalery.value, link:linkInputGalery.value}
-  listImage.prepend(createCard (cardElementGalery));
-  disableButton (popupButtonCloseCreate, validationConfig )
+  listImage.prepend(createCardNew(cardElementGalery));
   closePopupGalery ()
   evt.target.reset()
 }
 
 formElementGalery.addEventListener('submit', handleFormSubmitGalery);
 
-enableValidation (validationConfig)
