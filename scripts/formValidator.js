@@ -80,5 +80,6 @@ export default class FormValidator {
         this._hideInputError(errorElement, inputElement)
     }
   })
+      this._disableButton ()
   }
 }

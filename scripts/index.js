@@ -4,7 +4,6 @@ import {initialCards} from "./data.js";
 
 
 // вводим переменную popupElement, которой присваиваем селектор .popup//
-const popupElement = document.querySelector(".popup")
 const popupElementGalery = document.querySelector(".popup_galery")
 const popupElementProfile = document.querySelector(".popup_profile")
 const popupElementImage = document.querySelector('.popup_open-image-galery')
@@ -14,7 +13,7 @@ const selectorTemplate = '#image-template';
 const listImage = document.querySelector('.elements__items');
 
 // вводим остальные переменные, необходимые для работы: закрытие из попапа, открытие из профиля//
-const popupButtonCloseElementProfile = popupElement.querySelector(".popup__button-close")
+const popupButtonCloseElementProfile = popupElementProfile.querySelector(".popup__button-close")
 const popupButtonOpenElementProfile = document.querySelector(".profile__edit-button")
 
 const popupButtonOpenElementGalery = document.querySelector(".profile__add-button")
@@ -25,8 +24,8 @@ const popupButtonCloseElementImage = popupElementImage.querySelector('.popup__bu
 const popupButtonCloseCreate = popupElementGalery.querySelector(".popup__button-retention")
 
 // вводим переменные - поля имя и описания в карточке пользователя в попап //
-const nameInput = popupElement.querySelector(".popup__input_type_name")
-const jobInput = popupElement.querySelector(".popup__input_type_about")
+const nameInput = popupElementProfile.querySelector(".popup__input_type_name")
+const jobInput = popupElementProfile.querySelector(".popup__input_type_about")
 
 const imageInputGalery = popupElementGalery.querySelector(".popup__input_type_name-image")
 const linkInputGalery = popupElementGalery.querySelector(".popup__input_type_link")
