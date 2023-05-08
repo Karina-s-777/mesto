@@ -49,9 +49,9 @@
         <form class="popup__form" name="popup-form-profile" novalidate>
           <fieldset class="popup__contact-info">
             <!-- Класс для input с красной рамкой будет появляться через JS (popup__input_type_error)  -->
-            <input type="text" id="input-name" name="input-name" class="popup__input popup__input_type_name" placeholder="Имя"  required minlength="2" maxlength="40" value="">
+            <input type="text" id="input-name" name="nameUser" class="popup__input popup__input_type_name" placeholder="Имя"  required minlength="2" maxlength="40" value="">
             <span class="popup__input-error input-name-error"></span>
-            <input type="text" id="input-about" name="input-about" class="popup__input popup__input_type_about" placeholder="О себе" required minlength="2" maxlength="200" value="">
+            <input type="text" id="input-about" name="aboutUser" class="popup__input popup__input_type_about" placeholder="О себе" required minlength="2" maxlength="200" value="">
             <span class="popup__input-error input-about-error"></span>
             <button type="submit" class="popup__button-retention">Сохранить</button>
           </fieldset>
@@ -67,10 +67,10 @@
     <h2 class="popup__text-description">Новое место</h2>
     <form class="popup__form" name="popup-form-galery" novalidate>
       <fieldset class="popup__contact-info">
-        <input type="text" id="input-name-image" name="input-name" class="popup__input popup__input_type_name-image" placeholder="Название" required minlength="2" maxlength="30" value="">
-        <span class="popup__input-error input-name-image-error"></span>
-        <input type="url" id="input-about-image" name="input-about" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required value="">
-        <span class="popup__input-error input-about-image-error "></span>
+        <input type="text" id="nameImage" name="nameImage" class="popup__input popup__input_type_name-image" placeholder="Название" required minlength="2" maxlength="30" value="">
+        <span class="popup__input-error nameImage-error"></span>
+        <input type="url" id="link" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required value="">
+        <span class="popup__input-error link-error"></span>
         <button type="submit" class="popup__button-retention">Создать</button>
       </fieldset>
     </form>
@@ -102,7 +102,7 @@
 </template>
 
 <!-- <script src="./scripts/validate.js"></script>-->
-<script type="module" src="./scripts/index.js"></script>
+<script type="module" src="./pages/index.js"></script>
 
 </body>
 </html>

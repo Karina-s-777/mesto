@@ -1,8 +1,9 @@
+// класс работы с карточками (фото) на странице
 export default class Card {
   constructor (data, selectorTemplate, openPopupImage) {
     this._data = data;
     this._link = data.link;
-    this._name = data.name;
+    this._name = data.nameImage;
     this._selectorTemplate = selectorTemplate;
     this._openPopupImage = openPopupImage;
   }
@@ -21,15 +22,15 @@ export default class Card {
     this._cardHeart.classList.toggle('elements__heart_active');
 }
 
-_handlopenPopupImage = () => {
+_handlOpenPopupImage = () => {
   this._openPopupImage(this._data)
 }
-  // Клонируем разметку тимплея //
+  // Клонируем разметку тимплея, где linkImageTemplate - сама карточка на странице //
 
   _setEventListener () {
     this._cardHeart.addEventListener('click', this._handlelike);
     this._cardTrash.addEventListener('click', this._handleDelete);
-    this._linkImageTemplate.addEventListener('click', this._handlopenPopupImage);
+    this._linkImageTemplate.addEventListener('click', this._handlOpenPopupImage);
   }
 
 // Создание карточки //
