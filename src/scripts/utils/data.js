@@ -1,27 +1,27 @@
 const initialCards = [
   {
     nameImage: 'Рыбная деревня',
-    link: './images/kaliningrad_fish.jpg',
+    link: 'https://images.unsplash.com/photo-1677824674891-2dec1567166a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80',
   },
   {
-    nameImage: 'Королевские ворота',
-    link: './images/korolevskie-vorota.jpg',
+    nameImage: 'Балтийское море',
+    link: 'https://images.unsplash.com/photo-1677842414130-946da7dcc736?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
   },
   {
     nameImage: 'Куршская коса',
-    link: './images/kurskaj-kosa.jpg',
+    link: 'https://images.unsplash.com/photo-1631472430498-4669ea970d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
   },
   {
     nameImage: 'Зеленоградск',
-    link: './images/zelenogradsk.jpg',
+    link: 'https://images.unsplash.com/photo-1612170088766-ee95e1bbf2ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
   },
   {
     nameImage: 'Зеленоградск',
-    link: './images/zelenogradsk-cat.jpg',
+    link: 'https://images.unsplash.com/photo-1641926362213-d3f6f78ef6ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
   },
   {
     nameImage: 'Светлогорск',
-    link: './images/Svetlogorsk.jpg',
+    link: 'https://images.unsplash.com/photo-1629104411440-7ebc9134f93e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
   }
 ];
 

@@ -6,19 +6,18 @@
   <meta name="description" content="Сайт Савиловой Карины на Яндекс.Практикуме">
   <meta name="keywords" content="html, css, javascript">
   <meta name="author"  content="Савилова Карина">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Социальная сеть mesto</title> <!-- Слышала в подкасте, что это соц. сеть -->
+  <title>Социальная сеть mesto</title>
 </head>
 
 <body class="page">
   <header class="header page__header">
-    <img src="./images/Vector-logo.svg" alt="логотип социальной сети" class="header__logo">
+    <img src="<%=require('./images/Vector-logo.svg')%>" alt="логотип социальной сети" class="header__logo">
   </header>
 
     <main class="content page__content">
       <section class="content__profile profile">
         <div class="profile__person">
-          <img src="./images/image-avatar.jpg" class="profile__avatar" alt="Фотография пользователя">
+          <img src="<%=require('./images/image-avatar.jpg')%>" class="profile__avatar" alt="Фотография пользователя">
           <div class="profile__info">
             <div class="profile__user">
               <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -100,9 +99,6 @@
     </div>
   </li>
 </template>
-
-<!-- <script src="./scripts/validate.js"></script>-->
-<script type="module" src="./pages/index.js"></script>
 
 </body>
 </html>

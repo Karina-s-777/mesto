@@ -1,7 +1,9 @@
-import Card from "../scripts/components/card.js";
-import FormValidator from "../scripts/components/formValidator.js";
-import PopupWithImage from "../scripts/components/popupWithImage.js";
-import Section from "../scripts/components/section.js";
+import './index.css';
+
+import Card from "./scripts/components/card.js";
+import FormValidator from "./scripts/components/formValidator.js";
+import PopupWithImage from "./scripts/components/popupWithImage.js";
+import Section from "./scripts/components/section.js";
 import {
   initialCards,
   selectorTemplate,
@@ -15,9 +17,9 @@ import {
   listImageSelector,
   validationConfig,
   formInfoConfig
-} from "../scripts/utils/data.js";
-import UserInfo from "../scripts/components/userInfo.js";
-import PopupWithForm from "../scripts/components/popupWithForm.js";
+} from "./scripts/utils/data.js";
+import UserInfo from "./scripts/components/userInfo.js";
+import PopupWithForm from "./scripts/components/popupWithForm.js";
 
 
 const popupUserInfo = new UserInfo(formInfoConfig)
@@ -82,4 +84,3 @@ function openPopupGalery (e) {
 // Слушатели открытия попапов галерея и профиль //
 popupButtonOpenElementProfile.addEventListener('click', openPopupProfile)
 popupButtonOpenElementGalery.addEventListener('click', openPopupGalery)
-
