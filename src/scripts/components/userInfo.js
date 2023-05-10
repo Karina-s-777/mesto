@@ -1,7 +1,9 @@
 export default class UserInfo {
-  constructor (config) {
-    this._nameElement = document.querySelector(config.nameUserInfo)
-    this._informationElement = document.querySelector(config.informationUserInfo)
+  constructor(config) {
+    this._nameElement = document.querySelector(config.nameUserInfo);
+    this._informationElement = document.querySelector(
+      config.informationUserInfo
+    );
   }
 
   //метод getUserInfo, который возвращает объект с данными пользователя.
@@ -10,8 +12,8 @@ export default class UserInfo {
   getUserInfo() {
     return {
       nameUser: this._nameElement.textContent,
-      aboutUser: this._informationElement.textContent
-    }
+      aboutUser: this._informationElement.textContent,
+    };
   }
 
   // метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
@@ -20,7 +22,4 @@ export default class UserInfo {
     this._nameElement.textContent = userData.nameUser;
     this._informationElement.textContent = userData.aboutUser;
   }
-
-
 }
-

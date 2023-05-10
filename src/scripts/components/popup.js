@@ -5,41 +5,41 @@ export default class Popup {
     this._popupButtonClose = this._popup.querySelector(".popup__button-close");
   }
 
-
   // метод _closePopupByClickOnEscape, который содержит логику закрытия попапа клавишей Esc.//
-  _closePopupByClickOnEscape = (evt)=> {
-    if (evt.key === 'Escape') {
-      this.close()
+  _closePopupByClickOnEscape = (evt) => {
+    if (evt.key === "Escape") {
+      this.close();
     }
-  }
+  };
 
   _closePopupByClickOnButton = () => {
-    this.close()
-  }
+    this.close();
+  };
 
-
-  _closePopupByClickOnOverlay = (event)=> {
+  _closePopupByClickOnOverlay = (event) => {
     if (event.target === event.currentTarget) {
-      this.close()
-      }
-  }
+      this.close();
+    }
+  };
 
   //публичные методы open и close, которые отвечают за открытие и закрытие попапа. В т.ч. закрытие на esc через функцию handleEscClose
   open() {
-    this._popup.classList.add("popup_opened")
-    document.addEventListener('keydown', this._closePopupByClickOnEscape);
+    this._popup.classList.add("popup_opened");
+    document.addEventListener("keydown", this._closePopupByClickOnEscape);
   }
 
-  close () {
+  close() {
     this._popup.classList.remove("popup_opened");
-    document.removeEventListener('keydown', this._closePopupByClickOnEscape);
+    document.removeEventListener("keydown", this._closePopupByClickOnEscape);
   }
 
-// метод setEventListeners, который добавляет слушатель клика иконке закрытия попапа.
-// Модальное окно также закрывается при клике на затемнённую область вокруг формы.
+  // метод setEventListeners, который добавляет слушатель клика иконке закрытия попапа.
+  // Модальное окно также закрывается при клике на затемнённую область вокруг формы.
   setEventListeners() {
-    this._popup.addEventListener('click', this._closePopupByClickOnOverlay)
-    this._popupButtonClose.addEventListener('click', this._closePopupByClickOnButton)
+    this._popup.addEventListener("click", this._closePopupByClickOnOverlay);
+    this._popupButtonClose.addEventListener(
+      "click",
+      this._closePopupByClickOnButton
+    );
   }
-  }
-
+}
