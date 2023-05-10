@@ -18,23 +18,24 @@ export default class Card {
   //т.к мы делаем через this, evt не нужен. Удаление карточек через мусорку //
   _handleDelete = () => {
     this._cloneCard.remove();
+    this._cloneCard = null;
   };
 
-  _handlelike = () => {
+  _handleLike = () => {
     this._cardHeart.classList.toggle("elements__heart_active");
   };
 
-  _handlOpenPopupImage = () => {
+  _handleOpenPopupImage = () => {
     this._openPopupImage(this._data);
   };
   // Клонируем разметку тимплея, где linkImageTemplate - сама карточка на странице //
 
   _setEventListener() {
-    this._cardHeart.addEventListener("click", this._handlelike);
+    this._cardHeart.addEventListener("click", this._handleLike);
     this._cardTrash.addEventListener("click", this._handleDelete);
     this._linkImageTemplate.addEventListener(
       "click",
-      this._handlOpenPopupImage
+      this._handleOpenPopupImage
     );
   }
 

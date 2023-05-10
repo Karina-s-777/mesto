@@ -1,4 +1,4 @@
-import Popup from "./popup.js";
+import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
@@ -11,12 +11,12 @@ export default class PopupWithForm extends Popup {
   // метод _getInputValues, который собирает данные всех полей формы
   _getInputValues() {
     // создаем некий пока пустой объект, в который потом попадут все инпуты с указанными значениями
-    this._arrayValues = {};
+    this._formData = {};
     // проходим по всем инпутам и для каждого из них добавляем его же в массив, передавая ему определенное значение
     this._inputList.forEach((input) => {
-      this._arrayValues[input.name] = input.value;
+      this._formData[input.name] = input.value;
     });
-    return this._arrayValues;
+    return this._formData;
   }
 
   setInputValues(userData) {

@@ -25,12 +25,12 @@ const initialCards = [
   },
 ];
 
-// вводим переменную popupElement, которой присваиваем селектор .popup//
+/** вводим переменную popupElement, которой присваиваем селектор .popup*/
 const popupElementGalery = document.querySelector(".popup_galery");
 const popupElementProfile = document.querySelector(".popup_profile");
 
 // Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
-const selectorTemplate = "#image-template";
+const cardTemplateSelector = "#image-template";
 
 const popupButtonOpenElementProfile = document.querySelector(
   ".profile__edit-button"
@@ -67,7 +67,7 @@ export {
   initialCards,
   popupElementGalery,
   popupElementProfile,
-  selectorTemplate,
+  cardTemplateSelector,
   popupButtonOpenElementProfile,
   popupButtonOpenElementGalery,
   formElementProfile,

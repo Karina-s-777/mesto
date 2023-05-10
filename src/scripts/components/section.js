@@ -4,7 +4,7 @@ export default class Section {
   //Второй параметр конструктора — селектор контейнера, в который нужно добавлять созданные элементы.
   constructor({ items, renderer }, containerSelector) {
     this._container = document.querySelector(containerSelector);
-    this._initialCards = items;
+    this._items = items;
     //Свойство renderer — это функция, которая отвечает за создание и отрисовку данных на странице
     this.renderer = renderer;
   }
@@ -12,11 +12,11 @@ export default class Section {
   // Содержит публичный метод, который отвечает за отрисовку всех элементов.
   // Отрисовка каждого отдельного элемента должна осуществляться функцией renderer.
   renderItems() {
-    this._initialCards.forEach((data) => {
+    this._items.forEach((data) => {
       // renderer(data) в конечном счете в index.js создает/отрисовывает сущность card по шаблону класса Card
       // и возвращает для неё функцию createCard, которая описана внутри Card
       // и тут ниже мы говорим "создай карточку по шаблону и вставь её в разметку ul её в разметку"
-      this.addItem(this.renderer(data));
+      this.renderer(data);
     });
   }
 
