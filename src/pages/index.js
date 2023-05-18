@@ -1,4 +1,5 @@
 import "./index.css";
+import {getSection} from "../scripts/components/api.js";
 
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
@@ -9,10 +10,13 @@ import {
   cardTemplateSelector,
   popupButtonOpenElementProfile,
   popupButtonOpenElementGalery,
+  popupButtonOpenElementAvatar,
   formElementProfile,
   formElementGalery,
+  formElementAvatar,
   profilePopupSelector,
   galeryPopupSelector,
+  avatarPopupSelector,
   imagePopupSelector,
   listImageSelector,
   validationConfig,
@@ -32,23 +36,25 @@ const galleryFormsValidation = new FormValidator(
   formElementGalery
 );
 
+const avatarFormsValidation = new FormValidator(
+  validationConfig,
+  formElementAvatar
+);
+
 profileFormValidator.enableValidation();
 galleryFormsValidation.enableValidation();
+avatarFormsValidation.enableValidation();
 // ----------------- //
 
 const popupImage = new PopupWithImage(imagePopupSelector);
 popupImage.setEventListeners();
 
-const createNewCard = (data) => {
-  const card = new Card(data, cardTemplateSelector, popupImage.open);
-  return card.createCard();
-};
-
 /** создаем секцию с фотокарточками и внутрь добавляем генирацию карточек на страницу из указанного массива
 объявим класс, который в конструктор принимает items и renderer*/
 const section = new Section(
   {
-    items: initialCards,
+    // items: initialCards, надо убрать?
+
     /**  функция renderer создает новую карточку через шаблон Card, берет введенные данные имени и ссылки,
    берет селектор тимплея для копирования разметки и приписывает функцию открытия конкретного попапа,
    созданного по шаблону PopupWithImage */
@@ -59,8 +65,21 @@ const section = new Section(
   listImageSelector
 );
 
+getSection()
+  .then(res => {
+   console.log('res =>', res)
+   // console.log(res)
+    section.renderItems(res) /** добавила initialCards - пропала ошибка с пропис?? Верно ли сделала? */
+  })
+
+const createNewCard = (data) => {
+  const card = new Card(data, cardTemplateSelector, popupImage.open);
+  return card.createCard();
+};
+
 // добавили метод и вызвали его после создания экземпляра класса
-section.renderItems();
+// section.renderItems();
+
 
 // попап профиля
 const popupProfile = new PopupWithForm(profilePopupSelector, (data) => {
@@ -78,6 +97,13 @@ const popupFillGalery = new PopupWithForm(galeryPopupSelector, (data) => {
 
 popupFillGalery.setEventListeners();
 
+const popupEditAvatar = new PopupWithForm(avatarPopupSelector, (data) => {
+  document.querySelector('.profile__avatar').src = data.avatar;
+  popupEditAvatar.close();
+});
+
+popupEditAvatar.setEventListeners();
+
 // ----------------- //
 
 // Функция открытия попап профиль //
@@ -93,7 +119,14 @@ function openPopupGalery(e) {
   popupFillGalery.open();
 }
 
+// Функция открытия попапа аватара//
+function openPopupAvatar(e) {
+  avatarFormsValidation.resetErrorOpenPopup();
+  popupEditAvatar.open();
+}
+
 // Слушатели открытия попапов галерея и профиль //
 popupButtonOpenElementProfile.addEventListener("click", openPopupProfile);
 popupButtonOpenElementGalery.addEventListener("click", openPopupGalery);
+popupButtonOpenElementAvatar.addEventListener("click", openPopupAvatar);
 

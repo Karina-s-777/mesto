@@ -17,7 +17,9 @@
     <main class="content page__content">
       <section class="content__profile profile">
         <div class="profile__person">
-          <img src="<%=require('./images/image-avatar.jpg')%>" class="profile__avatar" alt="Фотография пользователя">
+          <button class="profile__button-avatar">
+            <img src="<%=require('./images/image-avatar.jpg')%>" class="profile__avatar" alt="Фотография пользователя">
+          </button>
           <div class="profile__info">
             <div class="profile__user">
               <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -76,6 +78,36 @@
   </div>
 </div>
 
+<!-- Попап подтверждения удаления карточки -->
+
+<div class="popup popup_delete-card">
+  <div class="popup__container">
+    <!-- Кнопка удаления остается -->
+    <button class="popup__button-close" type="button"></button>
+    <!-- Заголовок остается -->
+    <h2 class="popup__text-description popup__text-agreement">Вы уверены?</h2>
+     <!-- Кнопка остается, но обертку надо убрать получается -->
+     <button type="submit" class="popup__button-retention popup__button-agreement">Да</button>
+  </div>
+</div>
+
+<!-- Попап обновления аватарки -->
+
+<div class="popup popup_avatar">
+  <div class="popup__container">
+    <button class="popup__button-close" type="button"></button>
+    <h2 class="popup__text-description">Обновить аватар</h2>
+    <form class="popup__form" name="popup-form-galery" novalidate>
+      <fieldset class="popup__contact-info">
+        <!-- Тут надо менять -->
+        <input type="url" id="avatar" name="avatar" class="popup__input popup__input_type_avatar" placeholder="Ссылка на картинку" required value="">
+        <span class="popup__input-error avatar-error"></span>
+        <button type="submit" class="popup__button-retention">Сохранить</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
 <!-- - Попап открытия фотографии -->
 
 <div class="popup popup_open-image-galery">
@@ -95,7 +127,10 @@
       <img src="#" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
     <div class="elements__reaction">
       <h2 class="elements__mesto-name">Зеленоградск</h2>
-      <button class="elements__heart" type="button"></button>
+      <div class="elements__mesto-like">
+        <button class="elements__heart" type="button"></button>
+        <p class="elements__number-like">1</p>
+      </div>
     </div>
   </li>
 </template>

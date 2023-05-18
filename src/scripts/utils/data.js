@@ -28,6 +28,7 @@ const initialCards = [
 /** вводим переменную popupElement, которой присваиваем селектор .popup*/
 const popupElementGalery = document.querySelector(".popup_galery");
 const popupElementProfile = document.querySelector(".popup_profile");
+const popupElementAvatar = document.querySelector(".popup_avatar");
 
 // Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
 const cardTemplateSelector = "#image-template";
@@ -39,12 +40,19 @@ const popupButtonOpenElementGalery = document.querySelector(
   ".profile__add-button"
 );
 
+const popupButtonOpenElementAvatar  = document.querySelector(
+  ".profile__button-avatar"
+);
+
+
 // вводим переменную = нашей форме попапа//
 const formElementProfile = popupElementProfile.querySelector(".popup__form");
 const formElementGalery = popupElementGalery.querySelector(".popup__form");
+const formElementAvatar = popupElementAvatar.querySelector(".popup__form");
 
 const profilePopupSelector = ".popup_profile";
 const galeryPopupSelector = ".popup_galery";
+const avatarPopupSelector = ".popup_avatar";
 const imagePopupSelector = ".popup_open-image-galery";
 const listImageSelector = ".elements__items";
 
@@ -70,10 +78,13 @@ export {
   cardTemplateSelector,
   popupButtonOpenElementProfile,
   popupButtonOpenElementGalery,
+  popupButtonOpenElementAvatar,
   formElementProfile,
   formElementGalery,
+  formElementAvatar,
   profilePopupSelector,
   galeryPopupSelector,
+  avatarPopupSelector,
   imagePopupSelector,
   listImageSelector,
   validationConfig,
