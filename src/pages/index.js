@@ -1,5 +1,5 @@
 import "./index.css";
-import {getSection} from "../scripts/components/api.js";
+ import {getCards} from "../scripts/components/api.js";
 
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
@@ -14,9 +14,11 @@ import {
   formElementProfile,
   formElementGalery,
   formElementAvatar,
+  popupElementDelete,
   profilePopupSelector,
   galeryPopupSelector,
   avatarPopupSelector,
+  deletePopupSelector,
   imagePopupSelector,
   listImageSelector,
   validationConfig,
@@ -24,6 +26,7 @@ import {
 } from "../scripts/utils/data.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import PopupWithSubmit from "../scripts/components/PopupWithSubmit.js";
 
 const userInfo = new UserInfo(formInfoConfig);
 
@@ -53,7 +56,7 @@ popupImage.setEventListeners();
 объявим класс, который в конструктор принимает items и renderer*/
 const section = new Section(
   {
-    // items: initialCards, надо убрать?
+    items: initialCards, //надо это убирать?
 
     /**  функция renderer создает новую карточку через шаблон Card, берет введенные данные имени и ссылки,
    берет селектор тимплея для копирования разметки и приписывает функцию открытия конкретного попапа,
@@ -65,21 +68,42 @@ const section = new Section(
   listImageSelector
 );
 
-getSection()
-  .then(res => {
-   console.log('res =>', res)
-   // console.log(res)
-    section.renderItems(res) /** добавила initialCards - пропала ошибка с пропис?? Верно ли сделала? */
+ getCards()
+.then(res => {
+  console.log('getCard response', res)
+  section.renderItems(res)
   })
 
+
+/** создаем новый попап с функцией удаления карточек */
+ const deleteCardPopup = new PopupWithSubmit(deletePopupSelector, () => {
+
+});
+
+
+console.log(deleteCardPopup)
+deleteCardPopup.setEventListeners()
+
 const createNewCard = (data) => {
-  const card = new Card(data, cardTemplateSelector, popupImage.open);
+  const card = new Card(data, cardTemplateSelector, popupImage.open, deleteCardPopup.open);
   return card.createCard();
 };
 
-// добавили метод и вызвали его после создания экземпляра класса
-// section.renderItems();
 
+/**  createItem({
+  name: nameImage.value,
+  link: link.value
+}
+  )
+
+ .then(res => {
+  console.log('createItem response', res)
+}); */
+
+/** const handleSubmit = (data) => {
+  console.log("!!!")
+  createItem()
+} */
 
 // попап профиля
 const popupProfile = new PopupWithForm(profilePopupSelector, (data) => {
@@ -103,6 +127,7 @@ const popupEditAvatar = new PopupWithForm(avatarPopupSelector, (data) => {
 });
 
 popupEditAvatar.setEventListeners();
+
 
 // ----------------- //
 

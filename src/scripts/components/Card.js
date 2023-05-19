@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(data, selectorTemplate, openPopupImage) {
+  constructor(data, selectorTemplate, openPopupImage, openPopupDelete) {
     this._data = data;
     this._link = data.link;
     this._name = data.nameImage;
     this._selectorTemplate = selectorTemplate;
     this._openPopupImage = openPopupImage;
+    this._openPopupDelete = openPopupDelete;
   }
 
   // Клонируем разметку тимплея //
@@ -16,7 +17,11 @@ export default class Card {
   }
 
   //т.к мы делаем через this, evt не нужен. Удаление карточек через мусорку //
-  _handleDelete = () => {
+   _handleDelete = () => {
+  this._openPopupDelete(this);
+  };
+
+   _deleteCard = () => {
     this._cloneCard.remove();
     this._cloneCard = null;
   };

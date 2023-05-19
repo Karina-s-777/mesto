@@ -29,6 +29,7 @@ const initialCards = [
 const popupElementGalery = document.querySelector(".popup_galery");
 const popupElementProfile = document.querySelector(".popup_profile");
 const popupElementAvatar = document.querySelector(".popup_avatar");
+const popupElementDelete = document.querySelector(".popup_delete-card");
 
 // Создаем переменные со ссылкой на элементы Templat и Elements (на блок с карточками)//
 const cardTemplateSelector = "#image-template";
@@ -53,6 +54,7 @@ const formElementAvatar = popupElementAvatar.querySelector(".popup__form");
 const profilePopupSelector = ".popup_profile";
 const galeryPopupSelector = ".popup_galery";
 const avatarPopupSelector = ".popup_avatar";
+const deletePopupSelector = ".popup_delete-card";
 const imagePopupSelector = ".popup_open-image-galery";
 const listImageSelector = ".elements__items";
 
@@ -75,6 +77,7 @@ export {
   initialCards,
   popupElementGalery,
   popupElementProfile,
+  popupElementDelete,
   cardTemplateSelector,
   popupButtonOpenElementProfile,
   popupButtonOpenElementGalery,
@@ -84,6 +87,7 @@ export {
   formElementAvatar,
   profilePopupSelector,
   galeryPopupSelector,
+  deletePopupSelector,
   avatarPopupSelector,
   imagePopupSelector,
   listImageSelector,
