@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сайт Савиловой Карины на Яндекс.Практикуме">
+  <meta name="keywords" content="html, css, javascript">
+  <meta name="author"  content="Савилова Карина">
+  <title>Социальная сеть mesto</title>
+</head>
+
+<body class="page">
+  <header class="header page__header">
+    <img src="<%=require('./images/Vector-logo.svg')%>" alt="логотип социальной сети" class="header__logo">
+  </header>
+
+    <main class="content page__content">
+      <section class="content__profile profile">
+        <div class="profile__person">
+          <button class="profile__button-avatar">
+            <img src="<%=require('./images/image-avatar.jpg')%>" class="profile__avatar" alt="Фотография пользователя">
+          </button>
+          <div class="profile__info">
+            <div class="profile__user">
+              <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button"></button>
+            </div>
+            <p class="profile__user-info">Исследователь океана</p>
+            </div>
+        </div>
+           <button class="profile__add-button" type="button"></button>
+        </section>
+
+        <section class="elements content__elements">
+          <ul class="elements__items"></ul>
+        </section>
+
+    </main>
+
+    <footer class="footer page__footer">
+      <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+    </footer>
+
+<!-- Попап профиля  -->
+
+    <div class="popup popup_profile">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <h2 class="popup__text-description">Редактировать профиль</h2>
+        <form class="popup__form" name="popup-form-profile" novalidate>
+          <fieldset class="popup__contact-info">
+            <!-- Класс для input с красной рамкой будет появляться через JS (popup__input_type_error)  -->
+            <input type="text" id="input-name" name="nameUser" class="popup__input popup__input_type_name" placeholder="Имя"  required minlength="2" maxlength="40" value="">
+            <span class="popup__input-error input-name-error"></span>
+            <input type="text" id="input-about" name="aboutUser" class="popup__input popup__input_type_about" placeholder="О себе" required minlength="2" maxlength="200" value="">
+            <span class="popup__input-error input-about-error"></span>
+            <button type="submit" class="popup__button-retention">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+<!-- Попап фотографии -->
+
+<div class="popup popup_galery">
+  <div class="popup__container">
+    <button class="popup__button-close" type="button"></button>
+    <h2 class="popup__text-description">Новое место</h2>
+    <form class="popup__form" name="popup-form-galery" novalidate>
+      <fieldset class="popup__contact-info">
+        <input type="text" id="nameImage" name="nameImage" class="popup__input popup__input_type_name-image" placeholder="Название" required minlength="2" maxlength="30" value="">
+        <span class="popup__input-error nameImage-error"></span>
+        <input type="url" id="link" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required value="">
+        <span class="popup__input-error link-error"></span>
+        <button type="submit" class="popup__button-retention">Создать</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<!-- Попап подтверждения удаления карточки -->
+
+<div class="popup popup_delete-card">
+  <div class="popup__container">
+    <!-- Кнопка удаления остается -->
+    <button class="popup__button-close" type="button"></button>
+    <!-- Заголовок остается -->
+    <h2 class="popup__text-description popup__text-agreement">Вы уверены?</h2>
+    <form class="popup__form" name="popup-form-galery" novalidate>
+      <button type="submit" class="popup__button-retention popup__button-agreement">Да</button>
+  </form>
+  </div>
+</div>
+
+<!-- Попап обновления аватарки -->
+
+<div class="popup popup_avatar">
+  <div class="popup__container">
+    <button class="popup__button-close" type="button"></button>
+    <h2 class="popup__text-description">Обновить аватар</h2>
+    <form class="popup__form" name="popup-form-galery" novalidate>
+      <fieldset class="popup__contact-info">
+        <!-- Тут надо менять -->
+        <input type="url" id="avatar" name="avatar" class="popup__input popup__input_type_avatar" placeholder="Ссылка на картинку" required value="">
+        <span class="popup__input-error avatar-error"></span>
+        <button type="submit" class="popup__button-retention">Сохранить</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<!-- - Попап открытия фотографии -->
+
+<div class="popup popup_open-image-galery">
+  <div class="popup__container-image">
+    <button class="popup__button-close" type="button"></button>
+    <figure class="popup__figure-image">
+      <img src="#" alt="#" class="popup__image-open">
+      <figcaption class="popup__text-open"></figcaption>
+    </figure>
+  </div>
+</div>
+
+ <!-- Работа с п1 (фото и клонирование)  -->
+<template id="image-template">
+  <li class="elements__element">
+      <button class="elements__trash" type="button"></button>
+      <img src="#" class="elements__mask-group" alt="фотография с изображением города Зеленоградска">
+    <div class="elements__reaction">
+      <h2 class="elements__mesto-name">Зеленоградск</h2>
+      <div class="elements__mesto-like">
+        <button class="elements__heart" type="button"></button>
+        <p class="elements__number-like">1</p>
+      </div>
+    </div>
+  </li>
+</template>
+
+</body>
+</html>
