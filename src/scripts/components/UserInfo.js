@@ -4,6 +4,7 @@ export default class UserInfo {
     this._informationElement = document.querySelector(
       config.informationUserInfo
     );
+    this._avatar = document.querySelector(config.avatar);
   }
 
   //метод getUserInfo, который возвращает объект с данными пользователя.
@@ -18,8 +19,9 @@ export default class UserInfo {
 
   // метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
   //получает объект с ключами и устанавливает их в разметку (то есть делает наоборот в отличие от getUserInfo)
-  setUserInfo(userData) {
-    this._nameElement.textContent = userData.nameUser;
-    this._informationElement.textContent = userData.aboutUser;
+  setUserInfo({nameUser, aboutUser, avatar}) {
+    this._nameElement.textContent = nameUser;
+    this._informationElement.textContent = aboutUser;
+    this._avatar.src = avatar;
   }
 }

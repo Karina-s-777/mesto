@@ -6,6 +6,10 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector(".popup__form");
     this._inputList = this._form.querySelectorAll(".popup__input");
+    this._buttonSubmit = this._form.querySelector(".popup__button-retention");
+    //  console.log(this._buttonSubmit);
+    /* зафиксировали первоначальное значение текстконтент кнопок */
+    this._buttonDefaultValueText = this._buttonSubmit.textContent;
   }
 
   // метод _getInputValues, который собирает данные всех полей формы
@@ -33,8 +37,16 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      /* настраиваем UX кнопок самбита всех форм. Сперва мы добавляем тексконтенту всех кнопок "..." при нажатии на кнопку.
+       Далее создадим функцию, чтобы вернуть первоначальное значение  revertDefaultValue */
+      this._buttonSubmit.textContent = `${this._buttonSubmit.textContent}...`;
       this._handleFormSubmit(this._getInputValues());
     });
+  }
+
+  /* функция возвращения первоначального значение тексконтент кнопки */
+  revertDefaultValue() {
+    this._buttonSubmit.textContent = this._buttonDefaultValueText;
   }
 
   // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.

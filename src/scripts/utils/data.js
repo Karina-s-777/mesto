@@ -71,6 +71,7 @@ const validationConfig = {
 const formInfoConfig = {
   nameUserInfo: ".profile__user-name",
   informationUserInfo: ".profile__user-info",
+  avatar: ".profile__avatar",
 };
 
 export {

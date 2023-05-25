@@ -11,13 +11,18 @@ export default class PopupWithSubmit extends Popup {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitFunction(this._element)
+      /* ранее мы передавали this._element, теперь меняем функцию, чтобы настроить удаление карточки через api.
+       Теперь мы получим сюда не карточку, а объект с двумя свойствами - сама карточка и её id*/
+      this._submitFunction({ element: this._element, cardId: this._cardId });
     });
   }
 
-  /* при открытии/срабатывании метода он создаст в экземпляре этого класса свойство element с полученным аргементом */
-   open = (element) => {
-    super.open()
-    this._element = element;
-  }
+  /* при открытии/срабатывании метода он создаст в экземпляре этого класса свойство element с полученным аргементом + id карточки */
+  open = ({ element, cardId }) => {
+    super.open();
+    this._element = element; /* card в _handleDelete - сама карточка */
+    this._cardId = cardId; /* cardId в _handleDelete - её id */
+  };
 }
+
+
