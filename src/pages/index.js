@@ -87,7 +87,6 @@ const deleteCardPopup = new PopupWithSubmit(
         deleteCardPopup.close();
       })
       .catch((err) => console.log(`Ошибка ${err}`))
-      .finally();
   }
 );
 
@@ -105,7 +104,7 @@ const createNewCard = (data) => {
           .deleteLikeCard(cardId)
           .then((res) => {
             console.log(res);
-            card.isLiked(res.likes);
+            card.setLikes(res.likes);
           })
           .catch((err) => console.log(`Ошибка ${err}`));
         /** соответственно, наоборот */
@@ -114,7 +113,7 @@ const createNewCard = (data) => {
           .addLikeCard(cardId)
           .then((res) => {
             console.log(res);
-            card.isLiked(res.likes);
+            card.setLikes(res.likes);
           })
           .catch((err) => console.log(`Ошибка ${err}`));
       }
@@ -142,9 +141,9 @@ const popupProfile = new PopupWithForm(profilePopupSelector, (data) => {
 });
 
 const popupFillGalery = new PopupWithForm(galeryPopupSelector, (data) => {
-  Promise.all([api.getUser(), api.setNewCard(data)])
-    .then(([dataUser, dataCard]) => {
-      dataCard.mypersonalid = dataUser._id;
+  api.setNewCard(data)
+    .then((dataCard) => {
+      dataCard.mypersonalid = userInfo.getId();
       section.addItem(createNewCard(dataCard));
       popupFillGalery.close();
     })
@@ -205,13 +204,14 @@ popupButtonOpenElementAvatar.addEventListener("click", openPopupAvatar);
 Promise.all([api.getUser(), api.getCards()])
   .then(([dataUser, dataCard]) => {
     /* проходимся по dataCards и определеяем, на каких карточках нам надо отрисовывать мусорку, а на каких нет. Где mypersonalid - мой id, который мы присваиваем всем карточкам */
-    dataCard.forEach((dataCard) => (dataCard.mypersonalid = dataUser._id));
+    dataCard.forEach(dataCard => dataCard.mypersonalid = dataUser._id);
     /* присваиваем своим значениям пользователя (nameUser и т.д.) серверные соответствующие значения */
     userInfo.setUserInfo({
       nameUser: dataUser.name,
       aboutUser: dataUser.about,
       avatar: dataUser.avatar,
     });
+    userInfo.setId(dataUser._id);
     section.renderItems(dataCard);
   })
   .catch((err) => console.log(`Ошибка ${err}`));

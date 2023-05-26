@@ -5,6 +5,10 @@ export default class Api {
     this._authorization = options.headers.authorization;
   }
 
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
+  }
+
   getUser() {
     return (
       fetch(`${this._url}/users/me`, {
@@ -13,11 +17,7 @@ export default class Api {
         },
       })
         /*then значит дождись выполнения предыдущей строчки и что-то сделай с аргументом res*/
-        .then((res) => {
-          /* если запрос выполнился удачно, мы говорим res.json (данные теперь доступны в нужном формате) и переходим к следующему then
-  Если же нет - Promise.reject */
-          return res.ok ? res.json() : Promise.reject();
-        })
+        .then(this._checkResponse)
     );
   }
 
@@ -27,9 +27,7 @@ export default class Api {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 
   setUserAvatar(data) {
@@ -39,9 +37,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 
   setNewCard(data) {
@@ -52,9 +48,7 @@ export default class Api {
         name: data.nameImage,
         link: data.link,
       }),
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 
   deleteCard(cardId) {
@@ -63,9 +57,7 @@ export default class Api {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 
   setUserInfo(data) {
@@ -76,9 +68,7 @@ export default class Api {
         name: data.nameUser,
         about: data.aboutUser,
       }),
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 
   addLikeCard(cardId) {
@@ -87,9 +77,7 @@ export default class Api {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 
   deleteLikeCard(cardId) {
@@ -98,9 +86,7 @@ export default class Api {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.ok ? res.json() : Promise.reject();
-    });
+    }).then(this._checkResponse);
   }
 }
 

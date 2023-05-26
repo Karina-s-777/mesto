@@ -24,4 +24,13 @@ export default class UserInfo {
     this._informationElement.textContent = aboutUser;
     this._avatar.src = avatar;
   }
+
+  setId(id) {
+    this._id = id;
+  }
+
+  getId() {
+    return this._id;
+  }
+
 }

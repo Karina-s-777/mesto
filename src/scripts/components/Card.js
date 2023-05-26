@@ -74,7 +74,7 @@ export default class Card {
   }
 
   // программируем функцию постановки лайка нами и изменение кол-во лайков в общем от нашего лайка //
-  isLiked(likes) {
+  setLikes(likes) {
     this._cardHeart.classList.toggle("elements__heart_active");
     this._numberLike.textContent = likes.length;
   }
