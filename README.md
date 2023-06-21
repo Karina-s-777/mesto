@@ -1,5 +1,7 @@
 # Проект: Место
 
+
+
 ### Обзор
 * Интро
 * Технологии
@@ -13,14 +15,14 @@
 Особое внимание было уделено именно JS, так в работе с этим языком необходимо много вникать в суть формул, понятий и так далее.
 Особо интересно было реализовывать popup на новом языке
 
-**Технологии**
+**:hammer_and_wrench: Языки и инструменты**
 
-Базовые технологии верстки (в HTML и CSS)
-
-Кроме этого я задействовала:
-* свойство flex
-* media - медиазапросы
-* функции в JS
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
+</div>
 
 
 **Ссылка на GitHub Pages**
